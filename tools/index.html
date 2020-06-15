@@ -89,15 +89,6 @@ crossorigin=""></script>
     #hublist-padding {
       padding-right: 30px; /* Avoid including in map.css. Only used when fixed map resides to right of list. */
     }
-    .topLinks {
-        z-index: 99999;
-        padding: 20px 20px 20px 50px;
-        font-size: 18px;
-    }
-    .topLinks a {
-        color: #777;
-        text-decoration: underline;
-    }
     @media (max-width: 800px) {
       .padding-left {
         padding-left:0px;
@@ -172,6 +163,16 @@ Port of Bainbridge,30.902867,-84.606259,Liquid/Dry Bulk,1321 Spring Creek Road,B
 <div id="allsections" class="slides">       
   <section id="intro" class="litePanel scrollable-slide">
     <div class="content pageTopPadding">
+
+      <div class="topLinks">
+          <a href="../../io/">Overview</a> |
+          <a href="../../io/communities/">For Communities</a> |
+          <a href="../../io/coders/">For Coders & Designers</a> |
+          <a href="../../io/learn/">For Teachers and Students</a> | 
+          <a href="../../io/team/">Our Team</a>
+      </div>
+      <br>
+
         <b><span class="siteTitleShort"></span></b>
         <br>
         
@@ -285,7 +286,7 @@ Port of Bainbridge,30.902867,-84.606259,Liquid/Dry Bulk,1321 Spring Creek Road,B
   <section id="objectives">
     <div class="content contentpadding">
 
-      <div style="font-size: 18px">
+      <div style="font-size:18px">
         <a href="https://www.epa.gov/smm/epa-sustainable-materials-management-program-strategic-plan-fiscal-years-2017-2022">
           <img src="../img/overview/smmstratplan.jpg" style="width:100%; max-width:180px; float:right; margin:0 0 30px 40px" class="fullMobile"></a>
 
@@ -656,7 +657,7 @@ Port of Bainbridge,30.902867,-84.606259,Liquid/Dry Bulk,1321 Spring Creek Road,B
 
           <a href="https://GitHub.com/modelearth/community/">Edit on GitHub</a> - Contribute to our code and datasets.<br>
 
-          <a href="../about/team/">Meet Our Team</a> - Contributors from US EPA, GDEcD and Georgia Tech.<br>
+          <a href="../../io/team/">Meet Our Team</a> - Contributors from US EPA, GDEcD and Georgia Tech.<br>
 
           <a href="https://waze.com/carpool" target="waze_carpool">Waze Carpool</a> - Find carpool riders and drivers near you.<br>
         </div>
@@ -716,11 +717,14 @@ Port of Bainbridge,30.902867,-84.606259,Liquid/Dry Bulk,1321 Spring Creek Road,B
     dp2.dataTitle = "Smart Data Projects";
     dp2.markerType = "google";
     dp2.listLocation = false;
+
+    loadMap1(dp2);
+
+    /*
     loadFromCSV('map1','map2', dp2, function(results) {
-      //alert('layer')
       layerControl['map1'].addOverlay(baselayers["Rail"], "Railroads"); // Appends to existing layers
     });
-
+    */
 </script>
 
 <script>

@@ -44,12 +44,33 @@ We'll use these for the [Farm Fresh Produce Map location filters](impact/?show=f
 Join a project at <a href="https://www.meetup.com/codeforatlanta/">Code for Atlanta</a> with [Code for America](https://www.codeforamerica.org/) 
 -->
 
+Teams will collaborate on integrated services using:  
+
+<b>Detached Frontends</b>
+- Vanilla JS and JQuery in the current [community repo](start)
+- [Real World](https://neighborhood.org/realworld) React / Redux  
+- Other Detached Frontends (to be hosted under one domain) - Each should have an index.html entry point in the root of its repo.  
+
+<b>Content Backends</b>
+- [Umbraco - .NET used by Chapel Hill and San Francisco](https://umbraco.com/products/umbraco-heartcore/)  
+- [DJango - CensusReporter Python3](../../community/resources/censusreporter)  
+- [Ruby on Rails - Discourse used by Code for America](https://discourse.codeforamerica.org)  
+- Durpal and other backends  
+
+Teams should provide documentation of automated server set-up steps. Priority is on quick installs, easy transfers of data, free hosting for static content (using GitHub, Google Sheets, etc.), and free or very low-cost hosting for content API's and Websockets.  
+
+<b>Trust Level Services</b>
+- Google Cloud websockets
+- Other Auth services  
+
+Some teams will apply Trust Levels authentication to [Google&nbsp;Sheet&nbsp;row approval](https://neighborhood.org/editor) (ideally with dual-support for AirTable), possibly using [Google Cloud with Flask](https://medium.com/@abuango/how-to-collect-form-data-from-a-jamstack-website-to-google-sheets-using-google-cloud-functions-a59546c803a5)  
+
 ### Dev Areas
 
 1. A collection of [EEIO widgets](https://modelearth.github.io/io/charts) is being created using the [USEEIO API](https://github.com/usepa/useeio_api/wiki/Use-the-API). Charts are loaded from JSON files [generated](resources/useeio) 
 for Goods & Services demand vectors (Food System and Full System). 
 
-2. Detailed [Goods & Services Report](start/dataset) with economic value and environmental impact of production choices.   
+2. [Goods & Services Reports](start/dataset) for communities with environmental impacts of new technologies.   
 
 3. [Maps of products and industries](start/maps) - Regional hubs, industries by zipcode.  
 
@@ -61,11 +82,9 @@ for Goods & Services demand vectors (Food System and Full System).
 
 1. Update CSV files on employment and industries for D3 charts using [Census industry data](industries) and [income by zcta](prep/all)<!--[projections](prep/regression/)-->.  
 
-1. Add cascading category toggle to [Goods & Services Report](start/dataset). 
-
 1. Display [Farm Fresh - Federal USDA location data](farmfresh/ga) on Leaflet map - initially merged for Aglanta.  
 
-1. Use [PWA Starter](resources/pwa) to add an index.htmml page and thumbnails to the pwa folder.
+1. Use [PWA Starter](resources/pwa) to add an index.html page and thumbnails to the pwa folder.
 
 1. Display [Georgia Recycling data](recycling/ga/) in Leaflet map layers.
 
@@ -80,6 +99,8 @@ And/or <a href="https://www.apollographql.com/docs/apollo-server/">Apollo</a> Gr
 
 1. Use the [Install Notes](resources/censusreporter) for our [fork of Wazimap]( https://github.com/modelearth/wazimap) - a Python 3.0 version of [Census Reporter](https://censusreporter.org/profiles/86000US30313-30313/).  
 
+1. [LCA methodology to evaluate new technologies using USEEIO](https://modelearth.github.io/io/naics/add) and 
+Getting started with [RStudio and USEEIOR](https://modelearth.github.io/io/naics)
 <!--
 1. Deploy Leaflet in Widget. Include [windy.com](https://windy.com) weather layer using their [API for Leaflet](https://github.com/windycom/API).
 

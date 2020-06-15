@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Community Info</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="../img/logo/favicon.png" />
+
+<script type="text/javascript" src="../js/jquery/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../js/common/common.js"></script>
+<script type="text/javascript" src="../js/common/navigation.js"></script>
+
+<!--
+<link rel="stylesheet" type="text/css" href="../../io/charts/useeio/widgets.css">
+-->
+
+<script src="../js/d3/d3.v5.min.js"></script>
+
+<!-- PRODUCTION -->
+<link rel="stylesheet" type="text/css" href="../../io/charts/useeio/widgets.css">
+<script src="../../io/charts/useeio/lib/useeio_widgets.js"></script>
+<script type="text/javascript" src="js/topindustries.js"></script>
+<!-- LOCAL DEV -->
+<!--
+<link rel="stylesheet" type="text/css" href="../../useeio-widgets/build/widgets.css">
+<script src="../../useeio-widgets/build/lib/useeio_widgets.js"></script>
+-->
+
+<!-- After USEEIO to alter css -->
+<link rel="stylesheet" href="../css/community.css" />
+
+<style>
+/* Temp overrides */
+.indicator-row {
+    height: auto;
+}
+.download-section {
+	display: none; /* Until moved to footer */
+}
+#list_main {
+	display:none;
+}
+
+#map1 {
+	height:350px !important;
+	display: none;
+}
+#data {
+	displayX: none !important;
+}
+
+h1 {
+	margin-bottom: 1px;
+	padding-bottom: 1px;
+}
+.module_h1 {
+	font-size:28px;
+	padding-top:0px;
+	margin-top:0px;
+	margin-bottom:20px;
+	border-bottom: 1px solid #ddd;
+}
+#pageColumns > div {
+	padding:20px;
+}
+#output_table {
+    border-collapse: collapse;
+}
+#output_table table {
+    width:100%;
+}
+#output_table th {
+    white-space: nowrap;
+}
+th {
+    padding: 5px;
+    cursor:pointer;
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+}
+
+td {
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+
+/* Wide screen width */
+.rotateHeader {
+  display: block;
+  
+}
+th {
+	text-align: left; 
+}
+th.rotate {
+  heightX: 320px;
+  height: 240px;
+  height: 118px;
+
+  white-space: nowrap;
+  vertical-align: bottom;
+  text-align: left; 
+  padding: 0px;
+}
+th.rotate > div {
+  transform: 
+    translate(0px, 0px) /* 25px, 51px - To shift right and up. */
+    rotate(315deg); /* 45 is really 360 - 45 */
+  width: 22px;
+  padding: 4px;
+  padding-top: 5px;
+}
+th.rotate > div > span {
+  padding: 5px 10px;
+  font-weight: 400;
+  font-size: 13.5px;
+  display:block;
+  width:130px;
+  border-bottomX: 1px solid #dfdfdf;
+}
+th.rotate > div > span:hover {
+  background: #eee;
+  cursor: pointer;
+}
+.impactTitle {
+    padding-top: 34px;
+}
+.th_title {
+    width: 50px;
+}
+.th_title > div {
+  float:right; /* Allows for space bewteen sections */
+}
+.th_title > div > span, .th_title > div > span:hover {
+  border-bottomX: 1px solid #777 !important;
+  border-top: 1px solid #333;
+  backgroundXXXX: #ddd !important;
+  margin-bottomX: 4px;
+  cursor: default;
+}
+th.rotate > div > span > span {
+    display:none; /* Hide extra after the title */
+}
+td {
+	padding:10px;
+}
+
+
+td:nth-child(n+3) {
+    padding: 2px;
+}
+td:first-child {
+	min-width: 200px;
+}
+td:first-child > div {
+	max-height: 20px;
+	overflow: hidden;
+}
+
+/* Color rect */
+/*
+td:nth-child(n+3) > div {
+	border-left-style: solid;
+	border-left-width: 18px;
+	padding-left: 0px;
+    max-width:0px;
+}
+*/
+
+td:nth-child(n+3) > div > div {
+    /* visibility: hidden; */
+}
+
+/* Wide Screen Width */
+@media (min-width: 1400px) {
+  .rotateHeaderHolder {
+    margin-rightX:80px;
+  }
+}
+/* Standard Screen Width */
+@media (max-width: 1399px) {
+  #output_table {
+  	margin-right:25px;
+  }
+  .rotate {
+  	margin-right:20px;
+  }
+  .rotateHeader {
+    overflowX: auto;
+  }
+  th.rotate {
+    height: 160px;
+  }
+  th.rotate > div {
+    transform: 
+      translate(0px, 0px) /* 25px, 51px - To shift right and up. */
+      rotate(270deg); /* 45 is really 360 - 45 */
+    width: 15px;
+    padding: 0px;
+  }
+  th.rotate > div > span {
+    padding: 5px 10px;
+  }
+  .th_title {
+      width: 30px;
+  }
+  .th_title > div > span {
+    
+    font-size: 14px !important;
+    backgroundXXX: #eee;
+  }
+  .th_title > div > span, .th_title > div > span:hover {
+    margin-bottomX: 0px;
+  }
+}
+
+</style>
+  
+
+</head>
+
+<body>
+
+<!--
+Source: https://bl.ocks.org/luluwuluying/ace3699c70a2e3e7a2bb
+
+To do: Multicolumn sort (but allow for fixed first column)
+https://rawgit.com/joequery/Stupid-Table-Plugin/master/examples/multicolumn-sort.html
+-->
+
+
+<script type="text/javascript" src="../map/starter/embed-map.js?show=smart"></script>
+
+<div id="fixedFooter">
+	Click columns to sort. &nbsp; Source: info/data/usa/GA/GAcounties.csv
+</div>
+
+<!-- two columns -->
+<div id="pageColumns" style="margin:0 10px 0 10px; display: table; max-width:1800px;">
+<div style="display:table-cell">
+
+	<div style="float:right;margin:12px 0px 0 12px">
+		<input id="showValues" type="checkbox" checked> Show values
+	</div>
+	<h1 class="module_h1">Counties</h1>
+
+	<div id="output_table" style="width:100%" class="rotateHeader"></div>
+	<br>
+	<div style="padding:40px">
+	5-digit NAICS are the same in Canada, Mexico and the US.<br>
+	6-digit NAICS are country-specific. 
+	</div>
+</div>
+
+<div style="display:table-cell;padding-left:20px; padding-top:20px">
+	<div class="io">
+
+		<div style="float:right; font-size:40px;color:#777">&#9881;</div>
+		<div>
+			<h1 class="module_h1">Top Industries</h1>
+		</div>
+		<div id="detail_selection">
+			<select id="sortFactor" class="picklist">
+	          <option value="payann" selected>By Annual payroll</option>
+	          <option value="emp" >By Employee Count</option>
+	          <option value="estab">By Establishments</option>
+	        </select>
+	        <select id="naics" class="picklist">
+	          <option value="2" selected>Sectors - 2 digits</option>
+	          <!--option value="2">Subsectors - 3 digits</option-->
+	          <option value="4">Industry Group - 4 digits</option>
+	          <!--option value="4">NAICS Industry - 5 digits</option-->
+	          <option value="6">National Code - 6 digits</option>
+	        </select>
+		</div>
+		<br>
+
+		<div style="padding:5px">
+			<p id="p1"></p>
+		</div>
+		<br>
+
+	    <div style="margin: 0 auto;">
+	        <div class="impact-heatmap">
+	        </div>
+	        <div id="paginator">
+	        </div>
+	        <br><br>
+	    </div>
+	</div>
+</div>
+</div>
+<!-- /two columns -->
+
+
+<script type="text/javascript">
+// COMMON - also resides in embed-map.js
+function loadScript(url, callback)
+{
+  if (!document.getElementById(url)) { // Prevents multiple loads.
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.id = url; // Prevents multiple loads.
+    // Bind the event to the callback function. Two events for cross browser compatibility.
+    script.onreadystatechange = callback;
+    script.onload = callback;
+    //$(document).ready(function () { // Only needed if appending to body
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(script);
+    //});
+    console.log("loadScript loaded: " + url);
+  } else {
+    console.log("loadScript script already available: " + url);
+    callback();
+  }
+  // Nested calls are described here: https://books.google.com/books?id=ZOtVCgAAQBAJ&pg=PA6&lpg=PA6
+}
+
+
+
+var param = {};
+var hash = getHash(); // Include all existing
+param = loadParams(location.search,location.hash);
+window.onhashchange = function() {
+	param = loadParams(location.search,location.hash);
+	resetForm();
+}
+// END COMMON
+
+//Load in contents of CSV file
+//d3.csv("data/usa/GA/GAcounties.csv", function(error, myData) {
+d3.csv("data/usa/GA/GAcountiesPop.csv").then(function(myData,error) {
+	if (error) {
+		alert("error")
+		console.log("Error loading file. " + error);
+	}
+
+	// Data as values, not objects.
+	var myArray = [];
+
+	// Add a new variable, to make it easier to do a color scale.
+	// Alternately, you could extract these values with a map function.
+	var allDifferences = [];
+
+	myData.forEach(function(d, i) {
+
+		d.difference =  d.US_2007_Demand_$;
+
+		// OBJECTID,STATEFP10,COUNTYFP10,GEOID10,NAME10,NAMELSAD10,totpop10,Reg_Comm,Acres,Sq_Miles,Label,lat,lon
+		d.name = d.NAME10 + " County";
+
+		d.perMile = Math.round(d.totpop10 / d.Sq_Miles).toLocaleString(); // Breaks sort
+		d.perMile = Math.round(d.totpop10 / d.Sq_Miles);
+
+		d.Sq_Miles = Number(Math.round(d.Sq_Miles).toLocaleString());
+
+	 	// Add an array to the empty array with the values of each:
+	 	// d.difference, 
+	 	// , d.Sq_Miles
+ 	 	myArray.push([d.name, d.Reg_Comm, d.totpop10, d.perMile]);
+
+			// this is just a convenience, another way would be to use a function to get the values in the d3 scale.
+ 	 	allDifferences.push(d.difference);
+
+	});
+	//console.log(allDifferences);
+
+	var table = d3.select("#output_table").append("table");
+
+	var header = table.append("thead").append("tr");
+
+	// Objects to construct the header in code:
+	// The sort_type is for the Jquery sorting function.
+
+	var headerObjs = [
+		{ class: "", column: "name", label: "County", sort_type: "string" },
+		{ class: "", column: "Reg_Comm,", label: "Region", sort_type: "string" },
+		{ class: "", column: "Population", label: "Population", sort_type: "int" },
+		{ class: "", column: "Per Mile", label: "Per Mile", labelfull: "", sort_type: "int" },
+		//{ class: "", column: "Sq Miles", label: "Sq Miles", labelfull: "", sort_type: "int" },
+	];
+
+	header
+		.selectAll("th")
+		.data(headerObjs)
+		.enter()
+		.append("th")
+
+		.attr("data-sort", function (d) { return d.sort_type; })
+		.attr("class", function (d) { return d.class; })
+		.append("div")
+		.append("span")
+			.text(function(d) { return d.label; });
+
+	var tablebody = table.append("tbody");
+
+	rows = tablebody
+		.selectAll("tr")
+		.data(myArray)
+		.enter()
+		.append("tr");
+
+	// We built the rows using the nested array - now each row has its own array.
+
+	// The scale - start at 0 or at lowest number
+	console.log('Extent is ', d3.extent(allDifferences));
+
+	var colorScale = d3.scaleLinear()
+		.domain(d3.extent(allDifferences)) // To Do: Limit color scale to each column
+		.range(["#bcdbf7","#c00"]);
+
+	cells = rows.selectAll("td")
+		// each row has data associated; we get it and enter it for the cells.
+		.data(function(d) {
+			return d;
+		})
+		.enter()
+		.append("td")
+		.append("div")
+		.style("border-left-color", function(d,i) { // Was background-color
+			// for the last elements in the row, we color the background:
+			if (i >= 2) { // All the columns with colored boxes
+				return colorScale(d);
+			}
+		})
+
+		.append("div")
+		//.text(function(d,i) { // All columns have a div with a value from CSV data
+		//		return d;
+		//})
+		.html(function(d,i) {
+			if (i == 0) {
+				return "<input type='checkbox' id='" + d.split('-')[0] + "' class='loc' onclick='locClick(this)'/><span>" + d + "</span>";
+			} else {
+				return d;
+			}
+		})			
+		;
+
+
+	// load the function file you need before you call it...
+	loadScript('../start/dataset/stupidtable.js', function(results) { 
+			// jquery sorting applied to it - could be done with d3 and events.
+		$("table").stupidtable();
+		});
+
+	// INIT
+	// Set checkboxes based on param (which may be a hash, query or include parameter)
+	updateLoc(param.loc);
+});
+function updateLoc(loc) {
+	$(".loc").prop('checked', false);
+	if (loc) {
+		let sectors = loc.split(";");
+        for(var i = 0 ; i < sectors.length ; i++) {
+            $("#" + sectors[i]).prop('checked', true);
+        }
+    }
+}
+function resetForm() {
+	updateLoc(param.loc);
+}
+function locClick(which) {
+	//console.log(which.id);
+	hash.loc = $('.loc:checked').map(function() {return this.id;}).get().join(';'); 
+	updateHash();
+}
+document.getElementById('showValues').onclick = function() {
+    // access properties using this keyword
+    if ( this.checked ) {
+        // if checked ...
+        $("#output_table th.rotate > div > span").css("font-weight","600");
+        $("#output_table td:nth-child(n+3) > div > div").css("visibility","visible");
+        $("#output_table td:nth-child(n+3) > div > div").css("overflow","none");
+        $("#output_table td:nth-child(n+3) > div").css("max-width","none");
+        $("#output_table td:nth-child(n+3) > div").css("padding-left","5px");
+
+        // Restore hidden columns
+        $("#output_table th:nth-child(n+3)").css("display","table-cell");
+        $("#output_table td:nth-child(n+3)").css("display","table-cell");
+        
+    } else {
+        $("#output_table th.rotate > div > span").css("font-weight","400");
+        $("#output_table td:nth-child(n+3) > div > div").css("visibility","hidden");
+        $("#output_table td:nth-child(n+3) > div > div").css("overflow","auto");
+        $("#output_table td:nth-child(n+3) > div").css("max-width","0px");
+        $("#output_table td:nth-child(n+3) > div").css("padding-left","0px");
+
+        // Hide entire column
+        $("#output_table th:nth-child(n+3)").css("display","none");
+        $("#output_table td:nth-child(n+3)").css("display","none");
+    }
+};
+function getHash() {
+	return (function (a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i) {
+        var p = a[i].split('=');
+        if (p.length != 2) continue;
+        b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+    })(window.location.hash.substr(1).split('&'));
+}
+
+function updateHash() {
+	// Remove blank attributes
+    for (var i in hash) {
+      if (hash[i] === null || hash[i] === undefined || hash[i] === '') {
+        delete hash[i];
+      }
+    }
+
+    var hashString = decodeURIComponent($.param(hash)); // decode to display commas in URL
+
+    // Update if hash has occurred
+    if (window.location.hash != hashString) {
+    	let searchTitle = 'Page ' + hashString;
+        let queryString = '#' + hashString;
+
+        //console.log("Update URL to: " + window.location.pathname + window.location.search + queryString);
+        window.history.pushState("", searchTitle, window.location.pathname + window.location.search + queryString);
+    }
+}
+</script>
+
+
+
+
+<script>
+
+    var config = useeio.urlConfig();
+    var modelID = config.get().model || 'GAUSEEIO';
+
+    var model = useeio.model({
+        endpoint: '/io/charts/useeio/api',
+        model: modelID,
+        asJsonFiles: true,
+    });
+
+    var heatmap = useeio.impactHeatmap({
+        model: model,
+        selector: '.impact-heatmap',
+    });
+
+    var paginator = useeio.paginator({
+        model: model,
+        selector: '#paginator',
+    });
+
+    config.join(heatmap);
+    config.join(paginator);
+
+</script>
+
+</body>
+</html>
