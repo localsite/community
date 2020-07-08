@@ -43,18 +43,21 @@ $(document).ready(function(){
  		climbpath += "../";
  	}
 
+
  	if (param["showheader"] != "false") {
- 		if(location.host.indexOf('model.georgia') >= 0) { 
-	 		$("body").prepend( "<img src='" + climbpath + "../io/img/hero/sustainable-communities.jpg' style='width:100%'><br>");
-	 	}
+ 		if (param["showhero"] != "false") {
+	 		if(location.host.indexOf('model.georgia') >= 0) { 
+		 		$("body").prepend( "<div class='headerImage'><img src='" + climbpath + "../io/img/hero/sustainable-communities.jpg' style='width:100%'></div>");
+		 	}
+		 }
 	 	$("body").wrapInner( "<div id='fullcolumn'></div>"); // Creates space for sidecolumn
 	 	if(document.getElementById("sidecolumn") == null)
 		{
 	 		$("body").prepend( "<div id='sidecolumn' class='hideprint'></div>\r" );
 	 	}
 	 	$("body").prepend( "<div id='header' class='hideprint'></div>\r" );
-		
-	 	$("#header").load( climbpath + "../community/header.html", function( response, status, xhr ) {
+		let headerFile = "../community/header.html";
+	 	$("#header").load( climbpath + headerFile, function( response, status, xhr ) {
 
 	 		// Make paths relative to current page
 	 		$("#header a[href]").each(function() {
@@ -89,6 +92,7 @@ $(document).ready(function(){
 		 		$(".siteTitleShort").text("Model Building");
 		 		$('#logoholder').html("<a href='/'><img style='height: 25px;margin: 30px 10px 4px 10px;' src='" + climbpath + "../localsite/img/logo/neighborhood.png' style='width:140px;padding-top:4px'></a>");
 		 		$('.headerbar').css('height', '80px');
+		 		$('.headerOffsetOne').css('height', '80px');
 		 		$('.headerbarheight').css('height', '80px');
 		 		//$('.neighborhood').show(); // Not yet implemented
 		 		$('.neighborhood').css('display', 'block'); // Not yet implemented
@@ -98,9 +102,9 @@ $(document).ready(function(){
 		 		imageUrlSide = climbpath + "../community/img/logo/favicon.png";
 		 		$('#logoholderside').css('width', '24px');
 		 		$('#logoholderside').css('height', '24px');
-	 			$('#logospace').css('margin-top','2px');
+	 			//$('#logospace').css('margin-top','2px');
 		 		$('#logoholder').addClass('logoholder-modelearth');
-		 		$('#headerSiteTitle').html("<span style='float:left'>model<span style='color:#bbb;margin-left:1px'>earth</span></span>");
+		 		$('#headerSiteTitle').html("<span style='float:left'><a href='/community/' style='text-decoration:none'><span style='color: #777;'>model</span><span style='color:#bbb;margin-left:1px'>earth</span></a></span>");
 		 		//$('#headerLocTitle').html("<span style='float:left'>model<span style='color:#bbb;margin-left:1px'>earth</span></span><i class='material-icons' style='float:left; font-size:24px; margin:4px 2px 0px 2px; color:#bbb;'>keyboard_arrow_right</i><div style='float:left;font-size:21px; padding:0 14px 0 14px; letter-spacing: 1.5px; color:#999; border:1px solid #ccc'>Georgia,USA</div>");
 		 		//$('.earth').show(); // For nav menu
 		 		$('.earth').css('display', 'block'); 
@@ -114,6 +118,20 @@ $(document).ready(function(){
 			 	// Hack, since called too early for header
 			 	$('.mock-up').css('display', 'block');
 		 	}
+
+		 	if (param.titleArray) {
+		 		$('#headerSiteTitle').html("<span style='float:left'><a href='" + climbpath + "' style='text-decoration:none'><span style='color: #777;'>" + param.titleArray[0] + "</span><span style='color:#bbb;margin-left:1px'>" + param.titleArray[1] + "</span></a></span>");
+		 	}
+		 	if (param.favicon) {
+		 		imageUrl = climbpath + ".." + param.favicon;
+		 		//$('#logoholderside').css('width', '40px');
+		 		//$('#logoholderside').css('height', '40px');
+		 		$('.logoholder-modelearth').css('width', '40px');
+		 		$('.logoholder-modelearth').css('height', '40px');
+		 		$('.logoholder-modelearth').css('margin-top', '7px');
+		 		$('.logoholder-modelearth').css('margin-right', '20px');
+		 	}
+
 		 	$('#logoholder').css('background-image', 'url(' + imageUrl + ')');
 			$('#logoholder').css('background-repeat', 'no-repeat');
 
@@ -150,6 +168,13 @@ $(document).ready(function(){
 	            	}
 	        	}
 			});
+
+		});
+
+		$("body").append( "<div id='footer' class='hideprint'></div>\r" );
+		let footerFile = climbpath + "../community/footer.html";
+		if (param.footer) footerFile = param.footer;
+		$("#footer").load(footerFile, function( response, status, xhr ) {
 
 		});
 	} else {

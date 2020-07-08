@@ -16,6 +16,7 @@ $.getJSON(url, function (data) {
 });
 //dropdown.value="ENRG";
 //dropdown.prop('selectedIndex', 10);
+
 let dropdown2 = $('#graph-picklist-y');
 
 dropdown2.empty();

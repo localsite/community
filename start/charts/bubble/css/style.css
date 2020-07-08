@@ -1,14 +1,13 @@
 body {
   font-family: Helvetica;
   font-size: 13px;
-  margin: 10px auto;
 }
 
 #title{
   font-size: 20px;
-  text-align: center;
+  text-align: left;
   width: 40%;
-  margin-left: 15%;
+  margin-left: 2%;
   border-bottomX: 2px solid black;
   margin-bottom: 25px;
 }
@@ -16,14 +15,14 @@ body {
 .graph-picklist{
   margin-left: 5px;
 }
-
+/*
 #graph-wrapper{
   width: 90%;
   height: 400px;
-}
+}*/
 
 h4{
-  text-align: center;
+  /* text-align: center; */ /* avoid - effect info page */
   font-weight: normal;
 }
 
@@ -42,18 +41,18 @@ h4{
 }
 
 #graph-wrapper-x{
-  position: absolute;
-  top:450px;
+  
   left:40%;
+   transform: translate(0px, 385px);
   text-align: center;
 }
 
 #graph-wrapper-y{
-  position: absolute;
-  top:250px;
-  left:-120px;
+  
   text-align: center;
-  transform:rotate(-90deg);
+  transform:rotate(-90deg) translateX(-1001px) translateY(-10px);
+  transform-origin: bottom left;
+  
 }
 
 #equation{
@@ -67,7 +66,7 @@ div.tooltip {
   position: absolute;
   text-align: center;
   width: 170px;
-  heightX: 106px;
+  height: 106px;
   overflow: auto;
   padding: 2px;
   padding-top: 8px;
