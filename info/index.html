@@ -7,12 +7,11 @@
 <link rel="icon" type="image/x-icon" href="../img/logo/favicon.png" />
 
 <script type="text/javascript" src="../js/jquery/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="../js/common/common.js"></script>
+<script type="text/javascript" src="../../localsite/js/localsite.js"></script>
 <script type="text/javascript" src="../js/common/navigation.js"></script>
 
-
 <!--
-<link rel="stylesheet" type="text/css" href="../../io/charts/useeio/widgets.css">
+To activate: addCountyBoundaries
 -->
 
 <script src="../js/d3/d3.v5.min.js"></script>
@@ -28,13 +27,15 @@
 <script src="../../useeio-widgets/build/lib/useeio_widgets.js"></script>
 -->
 
-<script type="text/javascript" src="js/topindustries.js"></script>
+<script type="text/javascript" src="topindustries/js/topindustries.js"></script>
+<link type="text/css" href="topindustries/css/topindustries.css" rel="stylesheet" />
 
 <!-- After USEEIO to alter css -->
 <!--
-<link rel="stylesheet" href="../css/community.css" />
 <link type="text/css" href="../../localsite/css/base.css" rel="stylesheet" />
+<link rel="stylesheet" href="../css/community.css" />
 -->
+
 
 <style>
 /* Temp overrides */
@@ -42,7 +43,6 @@
 .includedContent {
   max-width: 1300px;
   margin:0 auto;
-
 }
 .mock-up {
 	displayX: inline-block !important;
@@ -184,13 +184,16 @@ h2 {
   
 
 <script>
+document.addEventListener('hashChangeEvent', function (elem) {
+	console.log("info/index.html detects hashChangeEvent");
+  //let params = loadParams(location.search,location.hash);
+  refreshWidgets();
+}, false);
+
 // INIT
 var hash = getHash(); // Include all existing
-$(window).on('hashchange', function() { // Avoid window.onhashchange since overridden by map and widget embeds
-	refreshWidgets();
-});
 function refreshWidgets() {
-	param = loadParams(location.search,location.hash); // param is declared in common.js
+	param = loadParams(location.search,location.hash); // param is declared in localsite.js
 	let priorHash = hash;
 	hash = getHash();
 	//alert("refreshWidgets from prior go: " + priorHash.go + " to " + hash.go);
@@ -199,33 +202,46 @@ function refreshWidgets() {
 	if (hash.go != priorHash.go) {
 		updateText(hash.go);
 	}
+	
+	if (hash.geo && hash.geo.split(",").length > 4) {
+        $("#infoColumn").hide();
+    } else if (hash.go) {
+		$("#infoColumn").show();
+	} else {
+        $("#infoColumn").show();
+        $(".mainColumn1").show();
+    }
+
 	if (hash.view != priorHash.view) {
 		applyView(hash.view);
 	}
-	if (hash.geo != priorHash.geo) { // Not usable, already changed at this point.
-		//hash.region = "";
-		//updateHash({"region",""});
-		$(".regiontitle").text(""); //Clear
-		$(".regionsubtitle").text(""); //Clear
-		updateLoc(hash.geo); // Check counties. (search-filters.js)
-	}
+
+
+	//alert(hash.regiontitle)
 	if (hash.regiontitle != priorHash.regiontitle) {
 		$(".regiontitle").text(hash.regiontitle);
 	}
-	if (hash.directory != priorHash.directory) {
-		
+
+	if (hash.geo != priorHash.geo) {
+		//$(".regiontitle").text(""); //Clear
+		//$(".regionsubtitle").text(""); //Clear
+		//updateLoc(hash.geo); // Check counties. (search-filters.js)
 	}
-	if (hash.indicators != priorHash.indicators) {
-		//alert('hashchange: ' + hash.indicators + " " + param.indicators);
-		//updateHash({"view":"mosaic"}); // Temp, until view=io ready.
-		//hash.view = "mosaic"; // Temp, until view=io ready.
-		loadIOWidgets(hash);
+	
+
+    if (param.catsort) {
+		$("#catsort").val(param.catsort);
 	}
-}
-function go(go) {
-	updateHash(go);
-	//refreshWidgets();
-	location.reload(); // Temp. For hash change to reach topindustries.js
+	if (param.catsize) {
+		$("#catsize").val(param.catsize);
+	}
+	if (param.catmethod) {
+		$("#catmethod").val(param.catmethod);
+	}
+	if (param.indicators) {
+		$("#indicators").val(param.indicators);
+	}
+
 }
 </script>
 
@@ -241,19 +257,33 @@ function go(go) {
 <!-- two columns -->
 <div class="pageColumns">
 <div class="mainColumn mainColumn1" style="font-size: 15px; padding-right: 30px">
-	<a onClick="go({'go':'', 'view':'mosaic', 'count':'10', 'regiontitle':'', 'geo':''}); return false;" href="./#view=mosaic">Overview</a> | 
-	<a onClick="go({'go':'bioeconomy', 'catsort':'estab', 'view':'mosaic', 'count':'10'}); return false;" href="./#go=bioeconomy&view=mosaic">Bioeconomy</a> | 
+	<a onClick="goHash({'go':'', 'view':'mosaic', 'count':'10', 'regiontitle':'', 'geo':''}); return false;" href="./#view=mosaic">Overview</a> | 
+	<a onClick="goHash({'go':'bioeconomy', 'catsort':'estab', 'view':'mosaic', 'count':'10'}); return false;" href="./#go=bioeconomy&view=mosaic">Bioeconomy</a> | 
 	<a href="../../io/charts/">About Widgets</a> |
-	<a onClick="go({'go':'dataprep', 'view':'mosaic', 'geo':'', 'regiontitle':'', 'count':'10', 'catsort':'estab'}); return false;" href="./#go=bioeconomy&view=mosaic">Data Prep</a>
+	<a onClick="goHash({'go':'dataprep', 'view':'mosaic', 'geo':'', 'regiontitle':'', 'count':'10', 'catsort':'estab'}); return false;" href="./#go=bioeconomy&view=mosaic">Data Prep</a>
 	
 	<br>
 </div>
 <div class="mainColumn mainColumn2" style="font-size: 15px;">
 	<a href="#view=mosaic">Statewide</a> | 
 
-	<a onClick="go({'regiontitle':'Southeast+Coastal+Georgia', geo':'US13001,US13005,US13127,US13161,US13229,US13305', 'view':'mosaic', 'count':'10'}); return false;" href="#regiontitle=Southeast+Coastal+Georgia&geo=US13001,US13005,US13127,US13161,US13229,US13305&view=mosaic&count=10">Southeast Coastal</a> |  
+	<a onClick="goHash({
+	'regiontitle':'Southeast+Coastal+Georgia',
+	'geo':'US13001,US13005,US13127,US13161,US13229,US13305', 
+	'view':'mosaic', 
+	'count':'10',
+	'lat':'31.1891',
+	'lon':'-81.4979'
+	}); return false;" href="#regiontitle=Southeast+Coastal+Georgia&geo=US13001,US13005,US13127,US13161,US13229,US13305&view=mosaic&count=10&lat=31.1891&lon=-81.4980">Southeast Coastal</a> |  
 
-	<a onClick="go({'regiontitle':'West+Central+Georgia','geo':'US13077,US13145,US13149,US13199,US13263,US13285', 'view':'mosaic', 'count':'10'}); return false;" href="#regiontitle=West+Central+Georgia&geo=US13077,US13145,US13149,US13199,US13263,US13285&view=mosaic&count=10">West&nbsp;Central&nbsp;Georgia</a>
+	<a onClick="goHash({
+	'regiontitle':'West+Central+Georgia',
+	'geo':'US13077,US13145,US13149,US13199,US13263,US13285', 
+	'view':'mosaic', 
+	'count':'10',
+	'lat':'33.0362',
+	'lon':'-85.0322'
+	}); return false;" href="#regiontitle=West+Central+Georgia&geo=US13077,US13145,US13149,US13199,US13263,US13285&view=mosaic&count=10">West&nbsp;Central&nbsp;Georgia</a>
 </div>
 </div>
 
@@ -294,12 +324,12 @@ function go(go) {
 				settings
 				</span>
 			</div>
-			<select id="catsort" class="picklist" onchange="updateHash({'catsort':this.value});refreshWidgets();">
+			<select id="catsort" class="picklist" onchange="goHash({'catsort':this.value});">
 	          <option value="payann" selected>By Annual Payroll</option>
 	          <option value="emp" >By Employee Count</option>
 	          <option value="estab">By Establishments</option>
 	        </select>
-	        <select id="catsize" class="picklist" onchange="updateHash({'catsize':this.value});refreshWidgets();">
+	        <select id="catsize" class="picklist" onchange="goHash({'catsize':this.value});">
 	          <option value="2">Sectors - 2 digits</option>
 	          <!--option value="2">Subsectors - 3 digits</option-->
 	          <option value="4">Industry Group - 4 digits</option>
@@ -313,7 +343,7 @@ function go(go) {
 		        	Choose a county or region above to view filter settings.
 		        </div>
 		        <div class="county-view" style="display:none">
-			        <select id="catmethod" class="picklist" onchange="updateHash({'catmethod':this.value});refreshWidgets();">
+			        <select id="catmethod" class="picklist" onchange="goHash({'catmethod':this.value});">
 			          <option value="1" selected>Estimate using unpublished payrolls</option>
 			          <option value="2" >Estimate using total state payroll</option>
 			          <option value="0" >Leave unpublished values blank</option>
@@ -322,59 +352,7 @@ function go(go) {
 			</div>
 		</div>
 
-		<!-- Sector List Format -->
-		<style>
-			#sector_list {
-				display: table;
-				width: 100%;
-				font-size: 13px;
-			}
-			#sector_list .row {
-				display: table-row;
-			}
-			#sector_list .row:first-of-type .cell, #sector_list .row:first-of-type .cell-right  {
-				border-bottom: 1px solid #ddd;
-				
-			}
-			
-			#sector_list .cell {
-				display: table-cell;
-				padding-right: 15px;
-			}
-			#sector_list .cell2XX {
-				display: table-cell;
-				padding-right: 15px;
-				text-align: center;
-			}
-			#sector_list .cell-right {
-				display: table-cell;
-				text-align: right;
-				white-space: nowrap;
-				padding-right: 12px;
-			}
-			#sector_list .cell, #sector_list .cell-right {
-				padding-top: 4px;
-				padding-bottom: 4px;
-				height: 24px;
-			}
-			#sector_list .row:nth-of-type(2) .cell, #sector_list .row:nth-of-type(2) .cell-right  {
-				padding-top: 10px;
-				height: 30px;
-			}
-			#sector_list .cell-right div { /* removed */
-				white-space: nowrap;
-			}
-			#sector_list .cell-right img {
-				margin-left: 8px;
-			}
-			#sector_list div {
-				margin-bottom: 5px;
-			}
-			#sector_list .cell-height {
-				overflow: hidden;
-				max-height: 16px;
-			}
-		</style>
+		
 		
 		<div id="p1"></div>
 		<br>
@@ -398,7 +376,7 @@ function go(go) {
 
 	<div class="io" style="float:right;">
 
-	<select id="indicators" class="filterClickX form-selectX picklist" onchange="updateHash({'indicators':this.value});refreshWidgets();" style="width: 450px;">
+	<select id="indicators" class="filterClickX form-selectX picklist" onchange="goHash({'indicators':this.value});loadIOWidgets(hash);" style="width: 450px;margin-bottom:0px">
 
 	<option value="">Industries with top impacts...</option>
 
@@ -476,11 +454,13 @@ function go(go) {
 	</div>
 
 
-	<h2 id="infoHeaderX">Industry Impact</h2>
+	<h2 style="border:0px" id="infoHeaderX">Industry Impact</h2>
+	<hr>
+
 	<div style="margin-bottom:16px">
 		<span id="infoHeaderNote"></span> 
-		<a href="#view=mosaic&count=20">Georgia USEEIO Mosaic</a> | 
-		<a href="#view=io&count=10">IO Flow Mockup</a> | 
+		<a href="#view=mosaic&count=20">Impact Mosaic</a> | 
+		<a href="#view=io&count=10">Input-Output Mockup</a> | 
 		<a href="../../io/charts/useeio/">More Widget Samples</a>
 	</div>
 </div>
@@ -630,7 +610,7 @@ https://rawgit.com/joequery/Stupid-Table-Plugin/master/examples/multicolumn-sort
 <br><br><br>
 <br><br><br>
 
-<div class="content contentpadding">
+<div class="content contentpadding" style="display:none">
 	<h2 class="module_h1" style="margin-bottom:10px">Set priorities for your community</h2>
 	<br>
 
@@ -657,18 +637,6 @@ https://rawgit.com/joequery/Stupid-Table-Plugin/master/examples/multicolumn-sort
 	</div>
 	<div style="clear:both"></div>
 
-
-	Participate in the <a href="../challenge">Fall 2020 Sustainable Communities Web Challenge</a>
-</div>
-
-
-
-<div id="fixedFooter" style="display:none">
-	<!--
-	Click columns to sort. &nbsp; &nbsp;Source: info/data/usa/GA/GAcounties.csv
-	-->
-	<a href="https://model.georgia.org/io/">About the Georgia Industry Evaluator</a> &mdash; 
-	<a href="https://model.earth/io/charts">USEEIO Input-Output Widgets</a>
 </div>
 
 
@@ -715,14 +683,7 @@ function updateText(go) {
 }
 updateText(param["go"])
 
-function locClick(which) {
-	//console.log(which.id);
-	hash.geo = $('.geo:checked').map(function() {return this.id;}).get().join(',');
 
-	$(".regiontitle").text(""); //Clear
-	let regiontitle = ""; // Remove from hash. Later associate existing regions.
-	updateHash({"geo":hash.geo,"regiontitle":regiontitle});
-}
 /*
 document.getElementById('showValues').onclick = function() {
     // access properties using this keyword
@@ -752,6 +713,8 @@ document.getElementById('showValues').onclick = function() {
 };
 */
 
+// These is missing var promises = [] and ready.
+// Let's look at Industry Mix first: http://localhost:8887/community/zip/leaflet/#columns=JobsAgriculture:50;JobsManufacturing:50
 function addCountyBoundaries() {
 	var req = new XMLHttpRequest();
 
@@ -764,7 +727,7 @@ function addCountyBoundaries() {
     req.send();
 
     var topoob = {};
-    topodata = {};
+    var topodata = {};
     function handler(){
 
     if(req.readyState === XMLHttpRequest.DONE) {
@@ -962,6 +925,7 @@ function addCountyBoundaries() {
      }
   }
 }
+//addCountyBoundaries();
 </script>
 
 
@@ -972,8 +936,8 @@ function loadIOWidgets(param) {
     const modelID = config.get().model || 'GAUSEEIO';
 
     const model = useeio.model({
-        //endpoint: '/io/charts/useeio/api',
-        endpoint: 'https://useeiowidgets.imfast.io/api',
+        endpoint: '/io/charts/useeio/api',
+        //endpoint: 'https://useeiowidgets.imfast.io/api',
         model: modelID,
         asJsonFiles: true,
     });
@@ -1032,15 +996,13 @@ function loadIOWidgets(param) {
 	    $("#io-output").show();
 	//}
 
+	/* Michael is working on an update so these do not overwrite the existing hash values. */
+
 	/*
-	// Reactivate this once fixed
 	config.updateIfAbsent({
 	  count: 20,
 	  view: "mosaic"
 	});
-	*/
-
-	/*
 	config.updateIfAbsent({
 	  count: 20,
 	  scopes: {
@@ -1050,28 +1012,11 @@ function loadIOWidgets(param) {
 	  },
 	});
 	*/
+	
 	applyView(param["view"]);
 }
 loadIOWidgets(param);
-
-
-// Move into topindustries.js
-$(document).ready(function () {
-	if (param.catsort) {
-		$("#catsort").val(param.catsort);
-	}
-	if (param.catsize) {
-		$("#catsize").val(param.catsize);
-	}
-	if (param.catmethod) {
-		$("#catmethod").val(param.catmethod);
-	}
-	if (param.indicators) {
-		$("#indicators").val(param.indicators);
-	}
-});
-
-
+refreshWidgets();
 
 function applyView(view) {
 	// CENTER - SECTORS

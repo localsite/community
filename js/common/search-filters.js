@@ -35,7 +35,7 @@ function populateFieldsFromHash() {
 		$(".regiontitle").val(param["region"]);
 	}
 }
-// var param = loadParams(location.search,location.hash); // This occurs in common.js
+// var param = loadParams(location.search,location.hash); // This occurs in localsite.js
 
 
 $(document).ready(function () {
@@ -205,7 +205,8 @@ $(document).ready(function () {
 		//alert($(this).data('id'));
         consoleLog("Call locationFilterChange from .filterUL li click: " + $(this).data('id'));
         locationFilterChange($(this).data('id'));
-		updateHash({"loc":$(this).data('id')});
+		updateHash({"geo":"","loc":$(this).data('id')});
+		// TO DO: set state
 
 		e.stopPropagation(); // Prevents click on containing #filterClickLocation.
 	 });
@@ -451,19 +452,16 @@ $(document).ready(function () {
 	// From Export Directory - Remove this function below
 	//loadHtmlTable(true);
 
-	$(window).on('hashchange', function() { // Refresh param values when user changes the URL after #.
-		console.log('hashchange');
-		clearFields();
+	document.addEventListener('hashChangeEvent', function (elem) {
+	//$(window).on('hashchange', function() { // Refresh param values when user changes the URL after #.
+		//clearFields();
 		param = loadParams(location.search,location.hash); // Refresh with new hash values
+		console.log("search-filters detects hashChangeEvent. param: ")
+		console.log(param)
 		populateFieldsFromHash();
 		productList("01","99","All Harmonized System Categories"); // Sets title for new HS hash.
-		refreshMain();
-	});
-	function refreshMain() { // refresh search results
-		console.log("refreshMain deactivated");
-		//loadHtmlTable(true);
-	}
-
+	//});
+	}, false);
 });
 
 
@@ -574,6 +572,13 @@ function locationFilterChange(selectedValue) {
         }
     }
 }
+function locClick(which) {
+	let geo = $('.geo:checked').map(function() {return this.id;}).get().join(',');
+
+	$(".regiontitle").text(""); //Clear
+	let regiontitle = ""; // Remove from hash. Later associate existing regions.
+	goHash({"geo":geo,"regiontitle":regiontitle});
+}
 function showCounties() {
 	if ($(".output_table > table").length) {
 		return; // Avoid reloading
@@ -617,7 +622,7 @@ function showCounties() {
 		});
 		//console.log(allDifferences);
 
-		var table = d3.select(".output_table").append("table");
+		var table = d3.select(".output_table").append("table").attr("id", "county-table");
 
 		var header = table.append("thead").append("tr");
 
@@ -689,12 +694,12 @@ function showCounties() {
 			})			
 			;
 
-
 		// load the function file you need before you call it...
 		// Not available here
-		//loadScript('/community/start/dataset/stupidtable.js', function(results) { 
+		
+		// loadScript is not available here, only in calling page.
+		//loadScript('/community/js/common/stupidtable.js', function(results) { 
 			// jquery sorting applied to it - could be done with d3 and events.
-
 			applyStupidTable(1); 
 		//});
 
@@ -707,12 +712,16 @@ function showCounties() {
 	});
 }
 function applyStupidTable(count) {
-	if (typeof stupidtable === "function") { // Prevents TypeError: $(...).stupidtable is not a function
-		$("table").stupidtable();
-		$("table2").stupidtable();
+	console.log("applyStupidTable attempt " + count);
+
+	if ($.fn.stupidtable) { // Prevents TypeError: $(...).stupidtable is not a function
+		console.log("Table function available. Count " + count);
+		//$("table").stupidtable();
+		$("#county-table").stupidtable();
+		//$("table2").stupidtable();
 	} else if (count <= 100) {
 		setTimeout( function() {
-			applyStupidTable(count++);
+			applyStupidTable(count+1);
 		}, 10 );
 	} else {
 		console.log("applyStupidTable attepts exceeded 100.");

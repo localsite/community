@@ -1,3 +1,11 @@
+// `hashChangeEvent` event reside in multiple widgets. 
+// Called by goHash within localsite.js
+document.addEventListener('hashChangeEvent', function (elem) {
+  console.log("bubble chart detects hash changed")
+  let params = loadParams(location.search,location.hash);
+  updateChart(params.x,params.y,params.z);
+}, false);
+
 //getting the listof indicators and populating the x and y dropdown options
 let dropdown = $('#graph-picklist-x');
 dropdown.empty();
@@ -35,7 +43,7 @@ $.getJSON(url, function (data) {
 
 var parentId = "#graph-wrapper";
 var animDuration = 1000;
-var margin = {top: 20, right: 150, bottom: 40, left: 50};
+var margin = {top: 20, right: 150, bottom: 55, left: 50};
 var width = 1300- margin.left - margin.right,    
     height = 350  - margin.top - margin.bottom;
 
@@ -204,19 +212,26 @@ $( document ).ready(function() {
 
     allData = data;
 
-    $("#graph-picklist-x").val('ENRG');
-    $("#graph-picklist-y").val('WATR');
-    $("#graph-picklist-z").val('LAND');
-
+    let params = loadParams(location.search,location.hash);
+    if (params.x && params.y && params.z) {
+      $("#graph-picklist-x").val(params.x);
+      $("#graph-picklist-y").val(params.y);
+      $("#graph-picklist-z").val(params.z);
+    } else { // Same as below
+      $("#graph-picklist-x").val('ENRG');
+      $("#graph-picklist-y").val('WATR');
+      $("#graph-picklist-z").val('LAND');
+    }
       updateChart(d3.select("#graph-picklist-x").node().value,
         d3.select("#graph-picklist-y").node().value,
         d3.select("#graph-picklist-z").node().value);
 
 
       d3.selectAll(".graph-picklist").on("change",function(){
-        updateChart(d3.select("#graph-picklist-x").node().value,
-          d3.select("#graph-picklist-y").node().value,
-          d3.select("#graph-picklist-z").node().value);
+        goHash({"x":$("#graph-picklist-x").val(),"y":$("#graph-picklist-y").val(),"z":$("#graph-picklist-z").val()});
+        //updateChart(d3.select("#graph-picklist-x").node().value,
+        ///  d3.select("#graph-picklist-y").node().value,
+        //  d3.select("#graph-picklist-z").node().value);
       }) 
   });
 });
@@ -231,8 +246,12 @@ var ordinal = d3.scaleOrdinal() // Becomes scaleOrdinal in v4
 
 
 function updateChart(x,y,z){
-  console.log("ebteda"+x)
-  
+  console.log("updateChart - x:"+ x + " y:" + y + " z:" + z);
+  if (!(x && y && z)) { // Same as above
+    x = 'ENRG';
+    y = 'WATR';
+    z = 'LAND';
+  }
   //Fetch data
   var records = getDimensions(x,y,z);
   updateTitle(x,y,z);

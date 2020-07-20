@@ -13,7 +13,7 @@ Choose an area below to compete for $10,000 in awards.  Winning entries will use
 
 1. Add to [map search filters](impact/), apply [industry icons](start/dataset/icons/) to charts, or integrate [map samples](start/maps).   
 
-   
+1. Update USEEIO widgets to embed in <a href="https://naaee.github.io/core/" style="white-space: nowrap;">Resource and Event Calendars</a> for environmental educators.
 
 
 ### React and Node.js
@@ -43,7 +43,7 @@ our [API endpoints](https://s3.amazonaws.com/useeio-api-go-swagger-staging/index
 
 ### Google REST App
 
-1. [Google Sheet Editor](https://neighborhood.org/editor) for crowdsourced updated - needs a lot of help. Code for Atlanta Brigades often use Google Sheets to maintain directories. This was a popular approach during the Covid19 response, however a process for listing contributors to return and make updates to their sheet rows using a webpage is sorely lacking.  
+1. [Google Sheet Editor](https://neighborhood.org/editor) for crowdsourced updated - needs a lot of help. Code for Atlanta Brigades often use Google Sheets to maintain directories. This was a popular approach during the Covid19 response, however a process allowing contributors to return and update their listings using a webpage is sorely lacking.  
 
 
 

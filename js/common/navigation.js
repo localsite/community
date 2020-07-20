@@ -4,7 +4,7 @@ if (window.location.protocol != 'https:' && location.host.indexOf('localhost') <
 var imageUrl, imageUrlSide;
 $(document).ready(function(){
 
-	// Might move back to common.js after removing use of jquery
+	// Might move back to localsite.js after removing use of jquery
 	  if(location.host.indexOf('localhost') >= 0 || param["view"] == "local") {
 	    var div = $("<div />", {
 	        html: '<style>.local{display:inline-block !important}.localonly{display:block !important}</style>'
@@ -41,8 +41,9 @@ $(document).ready(function(){
 	 		$("body").prepend( "<div id='sidecolumn' class='hideprint'></div>\r" );
 	 	}
 	 	$("body").prepend( "<div id='header' class='hideprint'></div>\r" );
-		let headerFile = "../community/header.html";
-	 	$("#header").load( climbpath + headerFile, function( response, status, xhr ) {
+		let headerFile = climbpath + "../community/header.html";
+		if (param.header) headerFile = param.header;
+	 	$("#header").load(headerFile, function( response, status, xhr ) {
 
 	 		// Make paths relative to current page
 	 		$("#header a[href]").each(function() {

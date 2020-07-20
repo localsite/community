@@ -1,10 +1,10 @@
-// Updates originate in community/js/common/common.js
+// Updates originate in localsite/js/localsite.js
 // To do: dynamically add target _parent to external link when in an iFrame, and no existing target
 
-// common.js does NOT use jquery, so it can be used before jquery loads.
+// localsite.js does NOT use jquery, so it can be used before jquery loads.
 
 // USE params (plural) to isolate within functions when creating embedable widgets.
-// USE param for any html page using common.js.
+// USE param for any html page using localsite.js.
 var param = loadParams(location.search,location.hash);
 
 // Loads params with priority given to:
@@ -15,7 +15,7 @@ function loadParams(paramStr,hashStr) {
   // NOTE: Hardcoded to pull params from last script, else 'embed-map.js' only
   // Get Script - https://stackoverflow.com/questions/403967/how-may-i-reference-the-script-tag-that-loaded-the-currently-executing-script
   let scripts = document.getElementsByTagName('script'); 
-  let myScript = scripts[ scripts.length - 1 ]; // Last script on page, typically the current script common.js
+  let myScript = scripts[ scripts.length - 1 ]; // Last script on page, typically the current script localsite.js
   //let myScript = null;
   // Now try to find one containging embed-map
   for (var i = 0; i < scripts.length; ++i) {
@@ -67,17 +67,17 @@ function mix(incoming, target) { // Combine two objects, priority to incoming. D
    return target;
 }
 function getHash() {
-      return (function (a) {
-        if (a == "") return {};
-        var b = {};
-        for (var i = 0; i < a.length; ++i) {
-            var p = a[i].split('=');
-            if (p.length != 2) continue;
-            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-        }
-        return b;
-      })(window.location.hash.substr(1).split('&'));
-  }
+    return (function (a) {
+      if (a == "") return {};
+      var b = {};
+      for (var i = 0; i < a.length; ++i) {
+          var p = a[i].split('=');
+          if (p.length != 2) continue;
+          b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+      }
+      return b;
+    })(window.location.hash.substr(1).split('&'));
+}
 function updateHash(addToHash) {
 
     let hash = getHash(); // Include all existing
@@ -118,6 +118,23 @@ function updateHash(addToHash) {
     window.history.pushState("", searchTitle, pathname + queryString);
     //refreshMain();
 }
+function goHash(addToHash) {
+  console.log("goHash ")
+  console.log(addToHash)
+  updateHash(addToHash);
+  triggerHashChangeEvent();
+}
+// Triggers custom hashChangeEvent in multiple widgets.
+// Exception, React widgets use a different process.
+var triggerHashChangeEvent = function () {
+    // Create a new event
+    var event = new CustomEvent('hashChangeEvent');
+    // Dispatch the event
+    document.dispatchEvent(event);
+};
+$(window).on('hashchange', function() { // Avoid window.onhashchange since overridden by map and widget embeds  
+  triggerHashChangeEvent();
+});
 function clearHash(toClear) {
   let hash = getHash(); // Include all existing
   let clearArray = toClear.split(/\s*,\s*/);

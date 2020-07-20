@@ -1318,7 +1318,8 @@ function mix(incoming, target) { // Combine two objects, priority to incoming. D
 // END COMMON
 
 // UNIQUE TO PAGE
-function jsLoaded(root) {	
+function jsLoaded(root) {
+	loadScript(root + '/community/js/common/stupidtable.js', function(results) {});
 	if (location.host.indexOf('localhost') >= 0) {
 		// Causing map points to shift right, maybe due to later loading.
 		//loadScript(root + '/community/js/common/navigation.js');
@@ -1365,7 +1366,7 @@ function lazyLoadFiles() {
   loadScript(root + '/community/js/d3/d3.v5.min.js', function(results) { // BUG - change so dual-map does not require this on it's load
   	loadScript(root + '/community/js/common/dual-map.js', function(results) {});
   });
-  loadScript(root + '/community/js/common/common.js', function(results) {
+  loadScript(root + '/localsite/js/localsite.js', function(results) {
 
   	var strVarCss = "<style>";
 	if (param["show"] == "suppliers") {
@@ -1399,14 +1400,15 @@ function lazyLoadFiles() {
 		} else if (count<100) { // Wait a milisecond and try again
 			setTimeout( function() {
 	   			console.log("try loadSearchFilters again")
-				loadSearchFilters(count++);
+				loadSearchFilters(count+1);
 	   		}, 10 );
 		} else {
 			console.log("ERROR: loadSearchFilters exceeded 100 attempts.");
 		}
 
 	}  	
-	includeCSS(root + '/community/css/community.css',root);
+	//includeCSS(root + '/community/css/community.css',root);
+	includeCSS(root + '/localsite/css/base.css',root);
 	includeCSS(root + '/community/css/search-filters.css',root);
 	includeCSS(root + '/community/css/display.css',root);
 	includeCSS(root + '/community/css/hexagons.css',root);
@@ -1444,11 +1446,11 @@ function dualmapLoaded(param, root, count) {
 		loadScript(root + '/community/js/common/search-filters.js', function(results) {
 
 			loadMap1();
-			window.onhashchange = function() {
+			document.addEventListener('hashChangeEvent', function (elem) {
 				//param = loadParam(location.search,location.hash);
-				console.log("user changed hash")
+				console.log("embed-map.js detects hashChangeEvent")
 				loadMap1();
-			}
+			}, false);
 		});
 	} else if (count<100) { // Wait a 100th of a second and try again
 		setTimeout( function() {
