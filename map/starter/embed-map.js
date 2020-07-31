@@ -455,23 +455,6 @@ strVar += "<!-- END FILTERS -->";
 strVar += "";
 strVar += "";
 strVar += "";
-strVar += "<aside class=\"Intermodal_Ports\">";
-strVar += "group,lat,lon,value,address,city,state,zip";
-strVar += "Inman Rail Yard,33.795735,-84.439278,NS,1600 Marietta Rd NW,Atlanta,GA,30318";
-strVar += "Savannah Yard,32.069578,-81.142174,CSX,3000 Tremont Ave,Savannah,GA,31405";
-strVar += "James D. Mason ICTF,32.123934,-81.150914,NS,3 North Main St,Garden City,GA,31408";
-strVar += "Fairburn Industry Yard,33.554907,-84.595026,CSX,6700 McLarin Rd,Fairburn,GA,30213";
-strVar += "Whitaker Rail Yard,33.80944,-84.655451,NS,6000 Westside Rd,Austell,GA,30106";
-strVar += "Chatham ICTF,32.125311,-81.151331,CSX,2 Main St,Garden City,GA,31408";
-strVar += "Savannah,32.10035,-81.169963,NS,1 Charlie Gay Drive,Savannah,GA,31408";
-strVar += "Cordele Intermodal Center,31.966779,-83.755101,Heart GA,2902 East 13th Ave.,Cordele,GA,31010";
-strVar += "Port of Savannah Ocean Terminal,32.093702,-81.111692,\"Ro\/Ro, Breakbulk\",55 N Lathrop Ave,Savannah,GA,31415";
-strVar += "Port of Brunswick,31.125887,-81.541194,\"Ro\/Ro, Agri-Bulk\",157 Penniman Cir,Brunswick,GA,31523";
-strVar += "Port of Savannah,32.125,-81.151,Container,2 Main St,Savannah,GA,31407";
-strVar += "Port of Brunswick Mayor's Point Terminal,31.143373,-81.494753,Breakbulk,1100 Bay Street,Brunswick,GA,31520";
-strVar += "Port of Columbus,32.448734,-84.984038,Liquid Bulk,800 Lumpkin Blvd,Columbus,GA,31901";
-strVar += "Port of Bainbridge,30.902867,-84.606259,Liquid\/Dry Bulk,1321 Spring Creek Road,Bainbridge,GA,39817";
-strVar += "<\/aside>";
 strVar += "";
 strVar += "<!-- Matches filterFields and headerFixed height -->";
 strVar += "<div class=\"headerOffset2\" style=\"height:56px\">&nbsp;<\/div>";
@@ -625,7 +608,7 @@ strVar += "        }";
 strVar += "      <\/style>";
 strVar += "";
 strVar += "";
-strVar += "      <div class=\"content contentpadding\" style=\"padding-top:0px\">";
+strVar += "      <div class=\"content contentpadding\" style=\"padding-top:0px;padding-bottom:0px\">";
 strVar += "        <div style=\"overflow: visible;\">";
 strVar += "";
 strVar += "          <div class=\"pagebuttonHolder\" style=\"min-height:45px;\">";
@@ -1409,15 +1392,15 @@ function lazyLoadFiles() {
 	}  	
 	//includeCSS(root + '/community/css/community.css',root);
 	includeCSS(root + '/localsite/css/base.css',root);
-	includeCSS(root + '/community/css/search-filters.css',root);
-	includeCSS(root + '/community/css/display.css',root);
-	includeCSS(root + '/community/css/hexagons.css',root);
+	includeCSS(root + '/localsite/css/search-filters.css',root);
+	includeCSS(root + '/localsite/css/map-display.css',root);
+	//includeCSS(root + '/community/css/hexagons.css',root);
 
 
-	includeCSS(root + '/community/css/leaflet/leaflet.css',root);
+	includeCSS(root + '/localsite/css/leaflet.css',root);
 	includeCSS('https://fonts.googleapis.com/icon?family=Material+Icons',root);
-	includeCSS(root + '/community/css/leaflet/leaflet.icon-material.css',root);
-	includeCSS(root + '/community/css/map.css',root);
+	includeCSS(root + '/localsite/css/leaflet.icon-material.css',root);
+	includeCSS(root + '/localsite/css/map.css',root);
 	
 
 	// Required by leafletLoaded that follows
@@ -1448,14 +1431,14 @@ function dualmapLoaded(param, root, count) {
 			loadMap1();
 			document.addEventListener('hashChangeEvent', function (elem) {
 				//param = loadParam(location.search,location.hash);
-				console.log("embed-map.js detects hashChangeEvent")
+				console.log("embed-map.js detects hashChangeEvent");
 				loadMap1();
 			}, false);
 		});
 	} else if (count<100) { // Wait a 100th of a second and try again
 		setTimeout( function() {
    			console.log("try dualmapLoaded again")
-			dualmapLoaded(param, root, count++);
+			dualmapLoaded(param, root, count+1);
    		}, 10 );
 	} else {
 		console.log("ERROR: dualmapLoaded exceeded 100 attempts.");

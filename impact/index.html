@@ -7,20 +7,21 @@
 <link rel="icon" type="image/x-icon" href="../img/logo/favicon.png" />
 
 <link rel="stylesheet" href="../css/community.css" />
-<link type="text/css" href="../../../localsite/css/base.css" rel="stylesheet" />
-<link rel="stylesheet" href="../css/search-filters.css" />
-<link rel="stylesheet" href="../css/display.css" />
+<link type="text/css" href="../../localsite/css/base.css" rel="stylesheet" />
+<link rel="stylesheet" href="../../localsite/css/search-filters.css" />
+<link rel="stylesheet" href="../../localsite/css/map-display.css" />
+<!--
 <link rel="stylesheet" href="../css/hexagons.css">
-
+-->
 <script type="text/javascript" src="../../../localsite/js/showdown.min.js"></script>
 <script type="text/javascript" src="../js/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="../../localsite/js/localsite.js"></script>
 
 <!-- Activate to include site navigation-->
 <script type="text/javascript" src="../js/common/navigation.js"></script>
-<link rel="stylesheet" href="../css/leaflet/leaflet.css" />
+<link rel="stylesheet" href="../../localsite/css/leaflet.css" />
  <!-- Resides AFTER Leaflet's CSS -->
-<script src="../js/leaflet/leaflet.js"></script>
+<script src="../../localsite/js/leaflet.js"></script>
 
 <script src="../js/d3/d3.v5.min.js"></script>
 
@@ -29,13 +30,13 @@
 <script type="text/javascript" src="../js/common/stupidtable.js"></script>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="../css/leaflet/leaflet.icon-material.css" rel="stylesheet">
-<script src="../js/leaflet/leaflet.icon-material.js"></script>
+<link href="../../localsite/css/leaflet.icon-material.css" rel="stylesheet">
+<script src="../../localsite/js/leaflet.icon-material.js"></script>
 <!--
 <script src="../js/d3/d3-legend.js"></script>
 -->
 <script type="text/javascript" src="../js/common/dual-map.js?show=suppliers"></script>
-<link rel="stylesheet" href="../css/map.css" />
+<link rel="stylesheet" href="../../localsite/css/map.css" />
 
 
 <!-- For Facebook -->
@@ -122,7 +123,7 @@
 
             <div style="position:relative; float:left;">
 
-                <div style="position:absolute; right:5px; top:5px; pointer-events:none;">
+                <div class="select-menu-arrow-holder">
                   <i class="material-icons" style="font-size:24px;cursor:pointer;">&#xE409;</i>
                   <i class="material-icons" style="font-size:24px;cursor:pointer;display:none;">&#xE313;</i>
                 </div>
@@ -523,7 +524,7 @@
 <!-- END FILTERS -->
 
 
-
+<div style="display:none">
 <aside class="Intermodal_Ports">
 group,lat,lon,value,address,city,state,zip
 Inman Rail Yard,33.795735,-84.439278,NS,1600 Marietta Rd NW,Atlanta,GA,30318
@@ -541,32 +542,11 @@ Port of Brunswick Mayor's Point Terminal,31.143373,-81.494753,Breakbulk,1100 Bay
 Port of Columbus,32.448734,-84.984038,Liquid Bulk,800 Lumpkin Blvd,Columbus,GA,31901
 Port of Bainbridge,30.902867,-84.606259,Liquid/Dry Bulk,1321 Spring Creek Road,Bainbridge,GA,39817
 </aside>
+</div>
 
 <!-- Matches filterFields and headerFixed height -->
 <div class="headerOffset2" style="height:56px">&nbsp;</div>
 
-
-
-<!-- APP MENU -->
-<!-- From search-filters.js displayBigThumbnails function -->
-<!-- Currently search-filters.js limits loading to localhost -->
-<div id="honeycombPanelHolder" style="display:none">
-  <div id="honeycombPanel">
-
-    <a name="sections"></a>
-    
-      <div class="bigThumbMenu widthColumns"></div>
-    
-
-    <div id="honeyMenuHolder" style="display:none">
-      <div id="honeycombMenu"></div>
-    </div>
-
-      <br><br>
-      
-  </div>
-</div>
-<!-- /APP MENU -->
 
 <!-- Settings Panel -->
 <div class="settingsPanel topMenuOffset floater" style="display:none; position:fixed">
@@ -753,8 +733,6 @@ Port of Bainbridge,30.902867,-84.606259,Liquid/Dry Bulk,1321 Spring Creek Road,B
 <div style="clear:both"></div>
 
 
-
-
 <div id="tableSide" class="hideMobile">
 <div id='sidecolumn' class='hideprint' style="display: none">
 </div>
@@ -892,10 +870,14 @@ Port of Bainbridge,30.902867,-84.606259,Liquid/Dry Bulk,1321 Spring Creek Road,B
       </style>
 
 
-      <div class="content contentpadding" style="padding-top:0px">
+      <div style="padding-top:0px;padding-bottom:0px">
         <div style="overflow: visible;">
 
           <div class="pagebuttonHolder" style="min-height:45px;">
+
+            <div class="showApps local" style="displayX:none; float:left;">
+              <i class="material-icons" style="font-size:30px; color:#ccc; padding:5px 4px 4px 0px">&#xE5C3;</i>
+            </div>
 
             <h1 class="shortTitle" style="displayX:none; margin-bottom:0px; padding:4px 15px 4px 0; white-space: nowrap; float:left; font-size:28px; color:#999; margin-top;"></h1>
 
@@ -998,6 +980,28 @@ Port of Bainbridge,30.902867,-84.606259,Liquid/Dry Bulk,1321 Spring Creek Road,B
       </div>
 <!-- /buttons -->
 
+
+<!-- APP MENU -->
+<!-- From search-filters.js displayBigThumbnails function -->
+<!-- Currently search-filters.js limits loading to localhost -->
+<div id="honeycombPanelHolder" style="display:none; margin-top:30px; margin-bottom:50px;">
+  
+  <!--div id="honeycombPanel"-->
+  <div id="honeycombPanel" style="display: block;">
+    <a name="sections"></a>
+    
+    <div class="bigThumbMenu widthColumns" style="margin:0 auto; "></div>
+
+    <div id="honeyMenuHolder" style="display:none">
+      <div id="honeycombMenu"></div>
+    </div>
+
+      <br><br>
+      
+  </div>
+</div>
+<div style="clear:both"></div>
+<!-- /APP MENU -->
 
 
 <section class="data-section" id="data" style="overflow:auto">
@@ -1281,8 +1285,8 @@ To add and update listings, download the <a href="map.csv">map.csv</a> file and 
 
 
 <script>
-// Omit 'use strict' when creating an embed because it could brake other's code.
-'use strict'; // Optional, make sure we are declaring variables.
+// Omit 'use strict' when creating an embed because it could brake third-party code.
+'use strict'; // Optional, makes sure we are declaring variables.
 
 
 // COMMON - also resides in embed-map.js
@@ -1320,11 +1324,10 @@ loadMap1();
 //layerControl['map1'].addOverlay(baselayers["Rail"], "Railroads"); // Appends to existing layers
 //layerControl['map2'].addOverlay(baselayers["Rail"], "Railroads"); // Appends to existing layers
 
-window.onhashchange = function() {
-  //param = loadParam(location.search,location.hash);
-  console.log("user changed hash");
+document.addEventListener('hashChangeEvent', function (elem) {
+  console.log("impact/index.html detects hashChangeEvent");
   loadMap1();
-}
+}, false);
 
 
 // WORK IN PROGRESS

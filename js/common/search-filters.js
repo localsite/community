@@ -1,6 +1,7 @@
 function populateFieldsFromHash() {
 	$("#keywordsTB").val(param["q"]);
 
+	$('.catList > div').removeClass('catListSelected');
 	if (param["cat"]) {
 		var catString = param["cat"].replace(/_/g, ' ');;
 		$("#catSearch").val(catString);
@@ -32,10 +33,15 @@ function populateFieldsFromHash() {
 	}
 	$("#productCodes").val(param["hs"]);
 	if (param["region"]) {
-		$(".regiontitle").val(param["region"]);
+		if (hash.go) {
+			$(".regiontitle").val(param["region"] + " - " + hash.go.toTitleCase());
+		} else {
+			$(".regiontitle").val(param["region"]);
+		}
 	}
 }
 // var param = loadParams(location.search,location.hash); // This occurs in localsite.js
+
 
 
 $(document).ready(function () {
@@ -45,7 +51,7 @@ $(document).ready(function () {
 		$(".si-btn").hide();
 	}
 	catArray = [];
-	$.get(dual_map.community_root() + 'impact/harmonized-system/hs.txt', function(data) {
+	$.get(dual_map.localsite_root() + 'info/data/harmonized-system.txt', function(data) {
 		var catLines = data.split("\n");
 		
 		catLines.forEach(function(element) {
@@ -585,7 +591,11 @@ function showCounties() {
 	}
 	//Load in contents of CSV file
 	//d3.csv("data/usa/GA/GAcounties.csv", function(error, myData) {
-	d3.csv("/community/info/data/usa/GA/GAcounties.csv").then(function(myData,error) {
+
+	//d3.csv(dual_map.community_root() + "info/data/usa/GA/GAcounties.csv").then(function(myData,error) {
+	d3.csv("https://modelearth.github.io/community/info/data/usa/GA/GAcounties.csv").then(function(myData,error) {
+	//d3.csv("https://modelearth.github.io/georgia-data/counties/GAcounties.csv").then(function(myData,error) {
+	//d3.csv("https://neighborhood.org/georgia-data/counties/GAcounties.csv").then(function(myData,error) {
 		if (error) {
 			alert("error")
 			console.log("Error loading file. " + error);
@@ -1114,7 +1124,8 @@ function access(minlevel,alevel) {
     }
 }
 function removeFrontFolder(path) {
-    return("../.." + path);
+    //return("../.." + path);
+    return(path);
 }
 function displayHexagonMenu(layerName,siteObject) {
 
@@ -1162,7 +1173,7 @@ function displayHexagonMenu(layerName,siteObject) {
 function displayBigThumbnails(layerName,siteObject) {
 	if (!$('.bigThumbUl').length) {
 
-  		$("#filterFieldsHolder").hide();
+  		//$("#filterFieldsHolder").hide();
 
 	    var currentAccess = 0;
 	    $(".bigThumbMenu").html("");
@@ -1212,9 +1223,9 @@ function displayBigThumbnails(layerName,siteObject) {
 	                                    //hrefLink = "href='" + removeFrontFolder(thelayers[layer].directlink) + "'";
 	                                }
 	                                if (menuaccess==0) { // Quick hack until user-0 displays for currentAccess 1. In progress...
-	                                    sectionMenu += "<li class='widthPercent user-" + menuaccess + "' style='displayX:none'><div class='bigThumbHolder'><div class='bigThumb' style='background-image:url(" + bkgdUrl + ");'><a href='" + directlink + "'><div class='bigThumbText'>" + thumbTitle + "<div class='bigThumbSecondary'>" + thumbTitleSecondary + "</div></div></a></div></div></li>";
+	                                    sectionMenu += "<div class='bigThumbMenuContent'><div class='widthPercent user-" + menuaccess + "' style='displayX:none'><div class='bigThumbHolder'><div class='bigThumb' style='background-image:url(" + bkgdUrl + ");'><a href='" + directlink + "'><div class='bigThumbText'>" + thumbTitle + "<div class='bigThumbSecondary'>" + thumbTitleSecondary + "</div></div></a></div></div></div></div>";
 	                                } else {
-	                                    sectionMenu += "<li class='widthPercent user-" + menuaccess + "' style='display:none'><div class='bigThumbHolder'><div class='bigThumb' style='background-image:url(" + bkgdUrl + ");'><a href='" + directlink + "'><div class='bigThumbText'>" + thumbTitle + "<div class='bigThumbSecondary'>" + thumbTitleSecondary + "</div></div></a></div></div></li>";
+	                                    sectionMenu += "<div class='bigThumbMenuContent'><div class='widthPercent user-" + menuaccess + "' style='display:none'><div class='bigThumbHolder'><div class='bigThumb' style='background-image:url(" + bkgdUrl + ");'><a href='" + directlink + "'><div class='bigThumbText'>" + thumbTitle + "<div class='bigThumbSecondary'>" + thumbTitleSecondary + "</div></div></a></div></div></div></div>";
 	                                }
 	                            }
 	                    //}
@@ -1241,7 +1252,7 @@ function displayBigThumbnails(layerName,siteObject) {
 	                            if (thelayers[layer].directlink) {
 	                                //hrefLink = "href='" + removeFrontFolder(thelayers[layer].directlink) + "'";
 	                            }
-	                            sectionMenu += "<li class='widthPercent user-" + menuaccess + "'><div class='bigThumbHolder'><div class='bigThumb' style='background-image:url(" + bkgdUrl + ");'><a href='" + directlink + "'><div class='bigThumbText'>" + thumbTitle + "<div class='bigThumbSecondary'>" + thumbTitleSecondary + "</div></div></a></div></div></li>";
+	                            sectionMenu += "<div class='bigThumbMenuContent'><div class='widthPercent user-" + menuaccess + "'><div class='bigThumbHolder'><div class='bigThumb' style='background-image:url(" + bkgdUrl + ");'><a href='" + directlink + "'><div class='bigThumbText'>" + thumbTitle + "<div class='bigThumbSecondary'>" + thumbTitleSecondary + "</div></div></a></div></div></div></div>";
 	                        }
 	                    }
 	                }
@@ -1249,7 +1260,7 @@ function displayBigThumbnails(layerName,siteObject) {
 	        }
 	    }
 	    //alert(sectionMenu);
-	    $(".bigThumbMenu").append("<ul class='bigThumbUl'>" + sectionMenu + "</ul>");
+	    $(".bigThumbMenu").append(sectionMenu);
 	    //$("#honeycombMenu").append("<ul class='bigThumbUl'>" + sectionMenu + "</ul>");
 	    
 	    $("#iconMenu").append(iconMenu);
@@ -1303,7 +1314,15 @@ function initSiteObject(layerName) {
 	          			showSearchClick();
 	          		});
 	          		$('.showApps').click(function(event) {
-						displayBigThumbnails("main",siteObject);
+	          			if ($("#honeycombPanelHolder").is(':visible')) {
+	          				$("#honeycombPanelHolder").hide();
+	          			} else {
+	          				$("#honeycombPanelHolder").show();
+	          				if (!$(".bigThumbMenuContent").length) {
+	          					displayBigThumbnails("main",siteObject);
+							}
+	          			}
+	          			
 					  	event.stopPropagation();
 					});
 	          		// These should be lazy loaded when clicking menu

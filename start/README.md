@@ -5,9 +5,9 @@ Stand-alone examples of formatting and displaying community data.
 <a href="https://modelearth.github.io/community/start/">View as website</a>
 </div>
 
-## [1. Start a local website](local)  
-## [2. Display a dataset](dataset)
-## [3. Embed IO charts](../../io/charts)  
+## [1. Start a local website](../../localsite/start)  
+## [2. Input-Output Widgets](../../io/charts)  
+## [3. Display a dataset](dataset)
 ## [4. Chart starter ideas](charts)  
 ## [5. Map Samples](maps)  
 ## [6. API - R Language and Python](../resources/useeio) 

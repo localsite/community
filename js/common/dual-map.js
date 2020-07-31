@@ -20,6 +20,20 @@ var dual_map = dual_map || (function(){
             }
             return (root);
         },
+        localsite_root : function() {
+            let root = location.protocol + '//' + location.host + '/localsite/';
+            if (location.host.indexOf('localhost') < 0) {
+              root = "https://neighborhood.org/localsite/";
+            }
+            return (root);
+        },
+        location_data_root : function() {
+            let root = location.protocol + '//' + location.host + '/georgia-data/';
+            if (location.host.indexOf('localhost') < 0) {
+              root = "https://neighborhood.org/georgia-data/";
+            }
+            return (root);
+        },
         absolute_root : function() {
           // Curently only used for feedback form
           let root = "https://map.georgia.org/community/"
@@ -751,7 +765,7 @@ function loadMap1(dp) { // Also called by search-filters.js
     if (param.lat) {
       dp1.latitude = param.lat;
       dp1.longitude = param.lon;
-      dp1.zoom = 14;
+      dp1.zoom = 12; // 14;
     }
     dp1.markerType = "google";
      
@@ -788,8 +802,9 @@ function loadMap1(dp) { // Also called by search-filters.js
     dp1.listTitle = "Georgia COVID-19 Response";
     dp1.listTitle = "Georgia Suppliers of&nbsp;Critical Items <span style='white-space:nowrap'>to Fight COVID-19</span>"; // For iFrame site
 
-    dp1.listInfo = "Select a category to the left to filter results. View&nbsp;<a href='https://www.georgia.org/sites/default/files/2020-07/ga_suppliers_list_7-15-2020.pdf' target='_parent'>PDF&nbsp;version</a>&nbsp;of&nbsp;the&nbsp;complete&nbsp;list.";
-    dp1.dataset = "https://georgiadata.github.io/display/products/suppliers/us_ga_suppliers_ppe_2020_07_15.csv";
+    // Also update ls map.js
+    dp1.listInfo = "Select a category to the left to filter results. View&nbsp;<a href='https://www.georgia.org/sites/default/files/2020-07/ga_suppliers_list_7-29-2020.pdf' target='_parent'>PDF&nbsp;version</a>&nbsp;of&nbsp;the&nbsp;complete&nbsp;list.";
+    dp1.dataset = "https://georgiadata.github.io/display/products/suppliers/us_ga_suppliers_ppe_2020_07_29.csv";
     //dp1.dataset = "/display/products/suppliers/us_ga_suppliers_ppe_2020_06_17.csv";
 
     dp1.dataTitle = "Manufacturers and Distributors";
@@ -864,7 +879,7 @@ function loadMap1(dp) { // Also called by search-filters.js
   //} else if (param["show"] == "produce" || param["design"]) {
   } else { // || param["show"] == "mockup"
     dp1.listTitle = "USDA Farm Produce (mockup)";
-    dp1.dataset = community_root + "map/starter/farmersmarkets-ga.csv";
+    dp1.dataset = dual_map.location_data_root() + "farmfresh/farmersmarkets-ga.csv";
     dp1.name = "Local Farms"; // To remove
     dp1.dataTitle = "Farm Fresh Produce";
     dp1.markerType = "google";
@@ -1095,7 +1110,6 @@ function showList(dp,map) {
           if (keyword.length > 0) {
 
             //console.log("Search for " + keyword);
-
             
             if (typeof dp.search != "undefined") { // An object containing interface labels and names of columns to search.
               //var selected_col = {};
@@ -1104,22 +1118,6 @@ function showList(dp,map) {
                 //selected_columns_object[key] = 0;
                 if (elementRaw[value]) {
                   if (elementRaw[value].toString().toLowerCase().indexOf(keyword) >= 0) {
-                    //console.log("FoundMatch for " + value);
-
-                    // Write this tighter
-                    /*
-                    if (selected_columns_object[key]) {
-                     selected_columns_object[key] = selected_columns_object[key]+1;
-                     selected_col[key].count = selected_col[key].count+1;
-                    } else {
-                      selected_columns_object[key] = 1;
-                      selected_columns_object[key]["value"] = value;
-
-                      selected_col[key].count = 1;
-                      selected_col[key].value = value;
-                    }
-                    */
-
                     foundMatch++;
                   }
                 }
