@@ -1324,7 +1324,7 @@ function jsLoaded(root) {
 		document.head.insertAdjacentHTML("beforeend", strVarCss);
 
 		function loadSearchFilters(count) {
-			if (typeof customD3loaded !== 'undefined' && typeof dual_map !== 'undefined') {
+			if (typeof customD3loaded !== 'undefined' && typeof localsite_map !== 'undefined') {
 				loadScript(root + '/localsite/js/localsite.js', function(results) { // For roots
 					loadScript(root + '/localsite/js/map-filters.js', function(results) {});
 				});
@@ -1339,7 +1339,7 @@ function jsLoaded(root) {
 
 		} 
 	  	loadScript(root + '/community/js/d3/d3.v5.min.js', function(results) { // BUG - change so search-filters.js does not require this on it's load
-	    	loadScript(root + '/community/js/common/dual-map.js', function(results) { 
+	    	loadScript(root + '/localsite/js/map.js', function(results) { 
 	  			loadSearchFilters(1); // Uses dual_map library for community_root
 	  		});
 	    });	
@@ -1359,7 +1359,7 @@ function leafletLoaded(root, count) {
 		loadScript(root + '/community/js/leaflet/leaflet.icon-material.js');
 		loadScript(root + '/community/js/jquery/jquery-1.12.4.min.js', function(results) {
 			loadScript(root + '/community/js/d3/d3.v5.min.js', function(results) {
-				loadScript(root + '/community/js/common/dual-map.js', function(results) { // BUG - change so dual-map does not require this on it's load
+				loadScript(root + '/localsite/js/map.js', function(results) { // BUG - change so dual-map does not require this on it's load
 					//loadScript(root + '/community/js/d3/d3-legend.js', function(results) { // This checks that load above is completed.
 			  		dualmapLoaded(param, root, 1);
 			  	});
@@ -1390,7 +1390,9 @@ function lazyLoadFiles() {
 
   // Load early so available later
   loadScript(root + '/community/js/d3/d3.v5.min.js', function(results) { // BUG - change so dual-map does not require this on it's load
-  	loadScript(root + '/community/js/common/dual-map.js', function(results) {});
+  	loadScript(root + '/community/js/jquery/jquery-1.12.4.min.js', function(results) {
+  		loadScript(root + '/localsite/js/map.js', function(results) {});
+  	});
   });
 
  	
@@ -1421,8 +1423,8 @@ function lazyLoadFiles() {
 lazyLoadFiles();
 
 function dualmapLoaded(param, root, count) {
-	if (typeof dual_map !== 'undefined' && typeof L.IconMaterial !== 'undefined') {
-		dual_map.init(["somevalue", 1, "controlId"]); // Used by link to feedback form
+	if (typeof localsite_map !== 'undefined' && typeof L.IconMaterial !== 'undefined') {
+		localsite_map.init(["somevalue", 1, "controlId"]); // Used by link to feedback form
 
 		$("#filterEmbedHolder img[src]").each(function() {
 			  if($(this).attr("src").toLowerCase().indexOf("http") < 0){
