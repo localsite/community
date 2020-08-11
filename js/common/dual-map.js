@@ -1,47 +1,6 @@
 
 // Dual Map Library - A global namespace singleton
 // If dual_map library exists then use it, else define a new object.
-var dual_map = dual_map || (function(){
-    var _args = {}; // private
-
-    return {
-        init : function(Args) {
-            _args = Args;
-            // some other initialising
-        },
-        helloWorld : function() {
-            alert('Hello World! -' + _args[0]);
-        },
-        community_root : function() {
-            // or sendfeedback
-            let root = location.protocol + '//' + location.host + '/community/';
-            if (location.host.indexOf('localhost') < 0) {
-              root = "https://modelearth.github.io/community/";
-            }
-            return (root);
-        },
-        localsite_root : function() {
-            let root = location.protocol + '//' + location.host + '/localsite/';
-            if (location.host.indexOf('localhost') < 0) {
-              root = "https://neighborhood.org/localsite/";
-            }
-            return (root);
-        },
-        location_data_root : function() {
-            let root = location.protocol + '//' + location.host + '/georgia-data/';
-            if (location.host.indexOf('localhost') < 0) {
-              root = "https://neighborhood.org/georgia-data/";
-            }
-            return (root);
-        },
-        absolute_root : function() {
-          // Curently only used for feedback form
-          let root = "https://map.georgia.org/community/"
-          return (root);
-        }
-    };
-}());
-
 
 var dataParameters = [];
 var dp = {};
@@ -75,7 +34,7 @@ var mbAttr = '<a href="https://www.mapbox.com/">Mapbox</a>',
 
 // INTERMODAL PORTS - was here
 
-function loadFromCSV(whichmap,whichmap2,dp,basemaps1,basemaps2,callback) {
+function loadFromCSV(whichmap,whichmap2,dp,basemaps1,basemaps2,attempts,callback) {
 
   console.log('loadFromCSV into #' + whichmap + '._leaflet_map');
   let defaults = {};
@@ -719,7 +678,7 @@ function loadMap1(dp) { // Also called by search-filters.js
     }),
   */
 
-  // This was outside of functions, but caused error because L was not available when dual-map.js loaded before leaflet.
+  // This was outside of functions, but caused error because L was not available when localsite/js/map.js loaded before leaflet.
   // Not sure if it was working, or if it will contine to work here.
   // Recall existing map https://github.com/Leaflet/Leaflet/issues/6298
   // https://plnkr.co/edit/iCgbRjW4aymAjoVoicZQ?p=preview&preview
@@ -756,6 +715,8 @@ function loadMap1(dp) { // Also called by search-filters.js
 
     dp1.shortTitle = "Communities";
     //dp1.dataset = dual_map.custom_data_root + "communities/map-georgia-smart.csv";
+
+    console.log("dual-map.js loading /georgia-data/communities/map-georgia-smart.csv");
     dp1.dataset = "/georgia-data/communities/map-georgia-smart.csv";
     dp1.listInfo = "Includes Georgia Smart Community Projects";
     dp1.search = {"In Title": "title", "In Description": "description", "In Website URL": "website", "In Address": "address", "In City Name": "city", "In Zip Code" : "zip"};
@@ -902,11 +863,11 @@ function loadMap1(dp) { // Also called by search-filters.js
   }
 
   // Load the map using settings above
-  loadFromCSV('map1','map2', dp1, basemaps1, basemaps2, function(results) {
+  loadFromCSV('map1','map2', dp1, basemaps1, basemaps2, 0, function(results) {
       
       // CALLED WHENEVER FILTERS CHANGE
 
-      //loadFromCSV('map1', 'map2', "/community/tools/map.csv", basemaps1, basemaps2, function(results) {
+      //loadFromCSV('map1', 'map2', "/community/tools/map.csv", basemaps1, basemaps2, 0, function(results) {
       // This function gets called by the geocode function on success
       //makeMap(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 
@@ -962,7 +923,7 @@ function loadMap1(dp) { // Also called by search-filters.js
         dp2 = {}
         dp2.name = "Communities";
         dp2.dataset = "/community/tools/map.csv";
-        loadFromCSV('map1', 'map2', dp2, basemaps1, basemaps2, function(results) {
+        loadFromCSV('map1', 'map2', dp2, basemaps1, basemaps2, 0, function(results) {
           // Add Railroad layer
           layerControl['map2'].addOverlay(baselayers["Rail"], "Railroads"); // Appends to existing layers
         });
