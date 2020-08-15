@@ -1,5 +1,5 @@
 #### [Join our Fall 2020 Web Challenge](challenge)
-<h1 class="h1-home">Volunteer Projects</h1>
+<h1 class="h1-home">Project Areas</h1>
 
 Choose an area below to compete for $10,000 in awards.  Winning entries will use the US EPA's Input-Output Widgets to create tools for communities using 24 environmental indicators applied to close to 400 industries. [Learn&nbsp;More&nbsp;and&nbsp;Register](challenge/)   
 
@@ -7,7 +7,7 @@ Choose an area below to compete for $10,000 in awards.  Winning entries will use
 
 ### HTML and JQuery - <a href="https://jamstack.org">JAM Stack Development</a>
 
-1. Embed and customize chart displays using the [EE Input-Output widgets](https://modelearth.github.io/io/charts)  
+1. Embed and customize chart displays using the [EE Input-Output widgets](https://model.earth/io/charts)  
 
 1. Build location profiles using the [Industry Impact Evaluator](info).<!-- Goods & Services Reports - communities with environmental impacts of new technologies -->  
 
@@ -106,10 +106,9 @@ Here’s an [Airbender API](https://last-airbender-api.herokuapp.com/) for relat
 
 ## Use of BEA commodities to estimate null industries
 
-Some industries have only establishment counts at both their state and county level (like Automobile Manufacturing).  The estimates for these missing industry values could be generated using the BEA commodity data with the crosswalk file.  
+To protect the privacy of individual firms, the census omits payroll and empolyee count data for some industries at both the state and county level (like Automobile Manufacturing).  For Georgia, there are [89 industries](../community-data/us/state/ga/industries_state13_naics6_0s.tsv) with only the number of establishments available at both the county and state lever. 
 
-As an example, there are 89 Georgia industries without any values documented in the industries_state13_naics6_0s.tsv file.  
-
+The estimates for these omitted industry values could be generated using the state BEA commodity data with the crosswalk file, or an average from other states could be used (as long as each industry has at least one payroll value in another state).  
 
 ##Data Integration
 
