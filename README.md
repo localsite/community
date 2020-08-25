@@ -3,7 +3,41 @@
 
 Choose an area below to compete for $10,000 in awards.  Winning entries will use the US EPA's Input-Output Widgets to create tools for communities using 24 environmental indicators applied to close to 400 industries. [Learn&nbsp;More&nbsp;and&nbsp;Register](challenge/)   
 
-##Coding Areas
+Join our Slack Channel: [favorhood.slack.com](https://favorhood.com/)  
+
+## Broad Areas
+
+Teams that contribute to these broad areas have a good chance of earning an award of 
+<span style="white-space: nowrap">$1,000, $1,500 or $2,500.</span>
+
+
+**A. Zipcode Demographics, Industries, Impacts and Machine Learning**  
+- Expand upon [county-based results](../localsite/info/) to provide zipcode-based industry lists. - [Details](industries) 
+- Add zipcode demographics using [uszipcode.readthedocs.io](https://uszipcode.readthedocs.io/01-Tutorial/index.html). (Python and D3) 
+
+
+**B. Supply Chain Inflow-Outflow Charts**  
+- Updates to Sankey D3 Charts, Leaflet Maps and Filters for [Industry Impact Evaluator](../localsite/info/)  
+- Create embeddable charts that use hash parameters (Python and D3, optionally React) - [Details](start/charts/sankey/)  
+
+
+**C. Industry Level Estimates for Counties and Zipcodes**  
+- Fill in gaps when only the number of establishments is provided at the state level - [Details](../localsite/info/data/)  
+- Update Data Processing Script, work with Team A on zipcode industry data prep. (Python) 
+ 
+**D. USEEIO Updates for bioecomony and bioproducts**  
+- Local economy inputs and new technology additions to USEEIO - [Details](../io/naics/)
+
+**E. Google Sheet Crowdsource Editor**
+- A REST process allowing editors to return and update their own row contributions. (see below)  
+
+[Contact us](../localsite/info/input/) for additional details and to avoid overlaps.  Document your team's times to help the judges award your contributions and as a basis for you to reward the team members who contribute the most.  
+
+
+
+## Specific Coding Areas
+
+Compliment broad areas above with specific coding area updates.  
 
 ### HTML and JQuery - <a href="https://jamstack.org">JAM Stack Development</a>
 
@@ -28,9 +62,6 @@ Choose an area below to compete for $10,000 in awards.  Winning entries will use
 And/or <a href="https://www.apollographql.com/docs/apollo-server/">Apollo</a> GraphQL for faster dev than the point-to-point nature of REST endpoints.  
 -->
 
-<!--
-1. Display demographic data using [Census Reporter](https://censusreporter.org/profiles/86000US30313-30313/) API or Census API or USEEIO API.
--->
 
 ### D3 Visualizations and Leaflet Maps
 
@@ -48,9 +79,11 @@ our [API endpoints](https://s3.amazonaws.com/useeio-api-go-swagger-staging/index
 
 1. [RStudio and USEEIOR](../io/naics) - Use LCA methodology to evaluate new technologies [including advanced biofuels](../io/bioeconomy/)
 
+1. Modernize [Census Reporter](https://censusreporter.org/profiles/86000US30313-30313/) by staring with Python 3.* Wazimap fork used in Africa and India. Populate database using most recent US Census API. [Our notes](resources/censusreporter)
+
 ### Google REST App
 
-1. [Google Sheet Editor](https://neighborhood.org/editor) for crowdsourced updated - needs a lot of help. Code for Atlanta Brigades often use Google Sheets to maintain directories, like these [Georgia](https://www.georgia.org/covid19suppliersmap) and [North Carolina](https://nccovidsupport.org/) maps. This was a popular approach during the initial Covid19 response, however a process allowing businesses to return and update specific Google rows associated to their social login through a webpage is sorely lacking.  
+1. [Google Sheet Editor](https://neighborhood.org/editor) for crowdsourced updated - needs a lot of help. Code for Atlanta Brigades often use Google Sheets to maintain directories, like these [Georgia](https://www.georgia.org/covid19suppliersmap) and [North Carolina](https://nccovidsupport.org/) maps. A social login process is needed to allow contributors to return and update their own Google sheet row data through an online form, without having access to activate the row data of other contributors. The set-up needs to take only a minute per sheet, so avoid Zapier or other time-intensive approaches.
 
 <br>
 
@@ -58,14 +91,16 @@ our [API endpoints](https://s3.amazonaws.com/useeio-api-go-swagger-staging/index
 # Specific Project Tasks
 
 Maintain a list of your time contributions to increase your award potential!  
-[Let us know](resources/input/) what you're working on to avoid overlaps.  
+[Let us know](../localsite/info/input/) what you're working on to avoid overlaps.  
 
 ## Bubble Chart
 
 D3 - [View Widget](../input-output/bubbles/) 
 
-- Modify so popups still appear when containing div to be relative. 
+- Modify so popups still appear when the containing div is set to position:relative. 
 - Scale to size of containing div during browser resize.
+- Set the default bubble color to red for more pop.
+- Omit red from the scale when other [bubbles are highlighted](../localsite/info/)
 
 ## Industry-List plus Mosaic Widget
 

@@ -1,10 +1,12 @@
 <!-- MOVED TO Community/Challenge/README.md -->
 
-<h1 style="font-weight:300">Sustainable Communities <span style="white-space:nowrap">Web Challenge</span></h1>
+<h1 style="font-weight:300"><span style="white-space:nowrap">2020 Web Challenge</span></h1>
 
-Form a team or join an existing team for our 2020 virtual event presented by the U.S. EPA in partnership with the Georgia Department of Economic Development and <a href="https://www.codeforamerica.org/" target="_parent">Code for America</a> You can compete from anywhere in the world!  
+Form a team, join an existing team or compete individually in our 2020 virtual event presented by the U.S. EPA in partnership with the Georgia Department of Economic Development and <a href="https://www.codeforamerica.org/" target="_parent">Code for America</a> You can compete from anywhere in the world!  
 
-We're combining national and state-level economic data, community resources and planning input from local communities to customize new environmental indicator models to meet&nbsp;community&nbsp;needs.<br><br>
+Join our Slack Channel: [favorhood.slack.com](https://favorhood.com/)  
+
+We're combining national and state-level economic data, community resources and planning input from local communities to customize new environmental indicator models to meet&nbsp;community&nbsp;needs.  
 
 We'll be using the new environmentally-extended input-output model called 
 <a href="https://cfpub.epa.gov/si/si_public_record_report.cfm?Lab=NRMRL&dirEntryId=336332" target="_blank">USEEIO</a> developed by the <a href="https://www.epa.gov" target="_parent">US Environmental Protection Agency (EPA)</a>. 
@@ -35,7 +37,7 @@ Honorable mention 2: $500
 Implementation project 1: $2,000  
 Implementation project 2: $2,000  
 
-The implementation portion will be alocated based on pitches by all teams and will be awarded upon project completion after the initial challenge.  
+The implementation portion will be allocated based on pitches from teams after the award recipients are named.  Implementation projects will be distributed upon project completion within 3 months after the challenge.  
 
 
 <a href="registration/">Register to participate</a>  
@@ -46,13 +48,13 @@ The implementation portion will be alocated based on pitches by all teams and wi
 Form your team in late summer and early fall. 
 Participate in an upcoming [Code for Atlanta zoom&nbsp;meetup](https://www.meetup.com/codeforatlanta/) to narrow in on your team's project area.  
 
-<b>Monday, September 21</b> - <a href="https://www.codeforamerica.org/events/national-day-of-civic-hacking" target="national">National Day of Civic Hacking</a>   
+<b>Saturday, September 12</b> - <a href="https://www.codeforamerica.org/events/national-day-of-civic-hacking" target="national">National Day of Civic Hacking</a>   
 
-Get a head start by integrating your team's project in the National Day of Civic Hacking.  
-[Contact Us](../resources/input/) to brainstorm ideas for your team project.  
+Get a head start by enrolling your team in the National Day of Civic Hacking and help us [bring Social Safety Net Programs online](https://www.codeforamerica.org/features/bringing-social-safety-net-benefits-online/).  
 
+### Sustainable Communities Challenge
 
-<b>Saturday, October 17 - 11 AM to noon</b> - Virtual Progress Updates on Zoom   
+<b>Monday, September 21 - 7 PM</b> - Virtual Kickoff on Zoom   
 
 <b>Saturday, October 24 - 11 AM to noon</b> - Final Round, Integrations 
 
