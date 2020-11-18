@@ -1,10 +1,6 @@
 
 # Web Challenge Rules
 
-Environmentally-Enabled Input-Output Widgets
-
-  
-
 <!--
 Supply chain "License to Operate" with the support of the community.
 
@@ -76,24 +72,31 @@ Teams will collaborate using one or more of the following:
 
 **Rules for Entries** 
 
+- Entries should be maintained in one or more public github repositories 
 - Entries should be easy to integrate with other projects.  
 - Please avoid using CMS content systems like Wix and WordPress.  
 - Provide documentation of set-up steps in a markdown file.
-- Include an index.html file that loads your readme.md file into HTML 
-  (The "[localsite](../../localsite/)" repo provides a process for displaying readme files.).
-- Have judges try your install steps multiple times before the competition ends.  
+- Include an index.html file that loads your readme.md file into HTML  
+  (The "[localsite](../../localsite/)" repo provides a process for displaying readme files.). 
 - Detached frontends should have an index.html file in their root.
 - Detached frontends should work under any domain when hosted as a Github fork.  
-- Employees of EPA, GDED and GDIT are not eligible for awards.  
+- Static frontend may be hosted for free using GitHub
+- Free or very affordable options for hosting for associated data <!--API's and Websockets (Over $20/month, Under $20/month, Free!)-->  
 
-**Judging Rubric**  
+_Employees of EPA, GDED and GDIT are not eligible for awards.  _
 
-- Utilizes USEEIO Widgets and/or USEEIO APIs effectively  
-- Installs easily using documented steps       
-- Static frontend may be hosted for free using GitHub    
-- Free or very affordable options for hosting<!--API's and Websockets (Over $20/month, Under $20/month, Free!)-->    
-<br>
+**Judging Criteria**  
+(relative weight of criteria in parentheses)
 
-<a href="challenge/registration/">Register to Participate</a> | 
+- Conforms with Rules for Entry (20%) 
+- Utilizes USEEIO Widgets and/or USEEIO APIs effectively (20%)
+- Installs easily using documented steps (20%)
+- Visually appealing and supports clear interpretation (20%)
+- Integrates with other location-based data sources or pulls in other community-oriented tools to make the results from widgets more community-relevant (20%)
+
+During judging you may receive requests to update your install steps.  
+We&nbsp;recommend having judges try your install in advance.  
+
+<a href="registration/">Register to participate</a> | 
 Send questions by [posting an issue on GitHub](https://github.com/modelearth/community/issues)  
 <br>
