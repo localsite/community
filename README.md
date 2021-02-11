@@ -3,9 +3,9 @@
 <a href="https://www.epa.gov/sciencematters/epa-researchers-working-improve-life-cycle-assessment-capabilities-communities" target="_blank">Working to Improve Life-Cycle Assessment Capabilities for Communities</a><br>
 
 <h3 style="font-weight:400; margin-bottom:0px">
-<div style="font-size: 14px">Saturday, January 23, 2021</div>
-Electric Vehicle Ecosystem Hackathon</h3>
-<a href="challenge/">Learn more</a><br>
+<div style="font-size: 14px">February to June 2021</div>
+Dive Into Data Commons</h3>
+<a href="challenge/">Learn more</a> and expand on <a href="../localsite/map/neighborhood/vaccines/">Vaccine Availability Crowdsourcing</a><br>
 
 <h3 style="font-weight:400">
 <div style="font-size: 14px">Fall 2021</div>
@@ -27,61 +27,52 @@ We're combing industry analytics, impacts, demographics and machine learning usi
 
 </div>
 
-## Project Areas
+<br>
+
+# Project Teams
 
 
 <!--
 Teams that contribute to these broad areas have a good chance of earning an award of 
 <span style="white-space: nowrap">$1,000, $1,500 or $2,500.</span>
 -->
- 
- 
+### You can participate on multiple teams!
 
-### React and Material UI
+Projects use the EPA's [Environmentally-Enabled Input-Output widgets](https://model.earth/io/charts)  
 
-1. Contribute to our [AWS Amplify React](../amplify/AWS/) repo by activating [Last Airbender indicator sets](../io/charts/inflow-outflow/).  
+NAICS for <a href="../projects/mobility/">industries impacted by transition to EV</a><br>
 
-1. Update the [Sankey D3 Chart](../io/charts/sankey/) data formatting to display on our [Inflow-Outflow](../io/charts/inflow-outflow/) page.  
-
-1. Update EPA's <a href="../io/charts/">Embeddable IO Widgets</a> generated from [USEEIO API](https://github.com/USEPA/USEEIO_API) local .json data.  
-<!--Auto-select all categories in center column when populated from naics values.-->  
+[Our county boundary map](/localsite/map/#go=smart) is embedded into [our industry tool](/localsite/info/#go=smart) along with [EPA IO widgets](../io/charts/).  
 
 
-### Leaflet Maps
+## I. EV Research Team
 
-1. Contribute to [Leaflet Maps](start/maps/) and [Maps for Us](../../localsite/map/mapsforus/).  
+Find existing widgets and repos that use the [Charging Station API](https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC)
 
-1. Add location search filters for states to our [Industry Impact Evaluator](../localsite/info/)  
+The Apple Electric Car might be produced by Kia in LaGrange, Georgia! How can we interface with their efforts?
 
+Find locations scraped by All The Places that list the number and types of charging stations at each location and oversee adding to the scraper. Save as [zip code](https://model.earth/zip/io/#zip=30310) files.
+
+Research sources of additional EV and hydrogen data listed at the bottom of this page.  
+
+## II. Python Machine Learning Team
+
+### Python Web Sockets, Javascript, Leaflet Maps
+
+Sample of embedded [Choropleth Map for Entire Automotive Industry](https://model.earth/localsite/info/#go=vehicles&indicators=VADD&naics=326199,336390,325211,326112,336412,333111,336211,336340,336370,336413,336320,335911,336360,331110,335912,331221,336111,336330&count=20)  
+
+1. Finalize csv output for counties by state using [BLS data from EPA Flowsa](/localsite/info/data/).  Merge columns and save in state folders.  
+
+1. Document setting up a public website using the Machine Learning Websocket in the first project sample below.
+
+1. Create cool map output with code from our existing Machine Learning projects:  
+- [Impact map (Machine Learning Websocket)](/io/impact/)  
+- [JS clustering (Machine Learning Javascript)](/community/zip/leaflet/#columns=JobsAgriculture:50;JobsManufacturing:50)
+- [Simple Choropleth](/community/map/income/) and [More maps](/community/start/maps/)
 
 
 <!--
-And/or <a href="https://www.apollographql.com/docs/apollo-server/">Apollo</a> GraphQL for faster dev than the point-to-point nature of REST endpoints.  
--->
-
-
-### D3 Visualizations
-
-
-1. [Visualizations](start/charts/) of material flow and regional input-output.  
-
-1. [Map starters](start) and [Leaflet route maps](start/routing/) for driving tours and deliveries.
-
-
-
-
-### HTML and JQuery - <a href="https://jamstack.org">JAM Stack Development</a>
-
-1. Embed and customize chart displays using our [Environmentally-Enabled Input-Output widgets](https://model.earth/io/charts)  
-
-1. Build location profiles using the [Industry Impact Evaluator](info).<!-- Goods & Services Reports - communities with environmental impacts of new technologies -->  
-
-1. Add to [map search filters](../localsite/map/), apply [industry icons](start/dataset/icons/) to charts, or integrate [map samples](start/maps).   
-
-1. Update USEEIO widgets to embed in <a href="https://naaee.github.io/core/" style="white-space: nowrap;">Resource and Event Calendars</a> for environmental educators.
-
-
-### Python  
+1. Contribute a USSEIO Widget to the [DataUSA.io](https://datausa.io/) GitHub repos.
 
 1. Test output normalization for [Sankey chart](../io/charts/sankey/) using the [USEEIO API Examples](/community/resources/useeio/)
 
@@ -93,83 +84,155 @@ And/or <a href="https://www.apollographql.com/docs/apollo-server/">Apollo</a> Gr
 
 1. Industry Level Estimates for Counties and Zipcodes. Fill in gaps when only the number of establishments is provided at the state level - [Details](../localsite/info/data/)  
 
-1. Update CSV files on employment and industries for D3 charts using [Census industry data](industries) and [income by zipcode (zcta)](prep/all)<!--[projections](prep/regression/)-->.  
+1. Update CSV files on employment and industries for D3 charts using [Census industry data](industries) and [income by zipcode (zcta)](prep/all). 
+-->
+<!--[projections](prep/regression/)-->
 
-1. Work with the [USEEIO API](https://github.com/usepa/useeio_api/wiki/Use-the-API) and update [Input-Output charts](../io/charts/). Widgets are loaded from JSON files generated from the [USEEIO API endpoints](https://s3.amazonaws.com/useeio-api-go-swagger-staging/index.html) on AWS <!-- also https://smmtool.app.cloud.gov/ -->for Goods & Services demand vectors (Food System and Full System).  
+<!--
+1. Work with the [USEEIO API](https://github.com/usepa/useeio_api/wiki/Use-the-API) and update [Input-Output charts](../io/charts/). Widgets are loaded from JSON files generated from the [USEEIO API endpoints](https://s3.amazonaws.com/useeio-api-go-swagger-staging/index.html) on AWS for Goods & Services demand vectors (Food System and Full System).  
 
 1. Update [Django Census Reporter](resources/censusreporter) by staring with the Python 3 Wazimap [fork](resources/censusreporter) used in Africa and India. Integrate US demographic data from Python 2 version. Set up Docker to [deploy to Heroku](https://github.com/datamade/how-to/blob/master/heroku/deploy-a-django-app.md) using a [containerization template](https://github.com/datamade/how-to/tree/master/docker/templates). Learn more [about using Heroku or AWS](https://datamade.us/blog/why-were-switching-to-heroku/).  
+-->
 
 
-### R-Language
+
+## III. React - Sankey Chart Team
+
+### React and USEEIO JSON
+
+1. Update the [Sankey D3 Chart](../io/charts/sankey/) data formatting to use the same process as the [USEEIO inflow-outflow widget](../io/build/slider.html#sectors=333613,335912,336111&page=1&count=10).  
+
+1. View info on [editing EPA IO widgets](/io/charts/).
+
+1. See sample [visualizations](start/charts/) of material flow charts.
+
+1. Normalization input and output so sides of Sankey are even.
+
+<!--
+And/or <a href="https://www.apollographql.com/docs/apollo-server/">Apollo</a> GraphQL for faster dev than the point-to-point nature of REST endpoints.  
+-->
+
+## IV. React - Last Airbender Team
+
+### React and Material UI
+
+1. Contribute to our [AWS Amplify React](../amplify/AWS/) repo by activating [Last Airbender indicator sets](../io/charts/inflow-outflow/).  
 
 
-1. Generate a list with lat/lon values for map zoom.  [R-Language Update](https://model.earth/community-data/us/)  
+1. Update EPA's <a href="../io/charts/">Embeddable IO Widgets</a> generated from [USEEIO API](https://github.com/USEPA/USEEIO_API) local .json data.  
+<!--Auto-select all categories in center column when populated from naics values.-->  
 
-1. [RStudio and USEEIOR](../io/naics) - Use LCA methodology to evaluate new technologies [including advanced biofuels](../io/bioeconomy/).  Add updates for electric vehicles  and bioproducts, Local economy inputs and new technology additions to USEEIO - [Details](../io/naics/)  
 
+<div class="popout">
+<h3>Last Airbender Interface</h3>
 
-### Microsoft .NET Core 5.0
+<p>We're developing a <a href="../../io/charts/inflow-outflow/#sectors=326210&page=1&count=10">Friendly Inflow-Outflow Interface</a> for grouping EPA indicators by Air, Water, Land, Energy, Wealth and Health.  
+Find cool Material UI interfaces that could be applied to our category set menu.</p>
 
-1. Create a "Disposable Database" for editing crowdsourced lists using .csv files hosted in GitHub, Google Sheets, AirTables and/or Azure.  Document your REST process using a [RealWorld example page](https://neighborhood.org/realworld) to integrate frontend and backend tools.  
+<p>
+The category set json resides in docs/static/json thanks to Alikah within our <a href="https://github.com/modelearth//amplifyapp">AmplifyApp</a> which is a great place to learn React.
+
+<a href="../amplify/AWS/">We've documented AWS Amplify set up steps</a>.
+
+<!--as Primary and Secondary columns in <a href="../community-data/us/indicators/LCIA_Indicator_sets.csv">LCIA_Indicator_sets.csv</a> and in the [Bio-Modeling Branch](https://github.com/modelearth/useeior/blob/Bio-Modeling/inst/extdata/USEEIO_LCIA_Indicators.csv).  
+-->
+</p>
+
+<p>
+Here’s an <a href="https://last-airbender-api.herokuapp.com/">Airbender API</a> for relating the four “nation” categories to characters.
+</p>
+
+</div>
+
+## V. .NET Core 5.0 Team
+
+1. Create a "Disposable Database" for editing crowdsourced lists using .csv files hosted in GitHub, Google Sheets, AirTables and/or Azure.  Document your REST process using a [RealWorld example page](https://neighborhood.org/realworld) to integrate frontend and backend tools.
+<!--
+Strapi for Amazon AWS - EC2, RDS and S3
+https://strapi.io/documentation/developer-docs/latest/deployment/amazon-aws.html
+
+Azure Data Studio - for Mac to access AWS EC2
+https://github.com/Microsoft/azuredatastudio
 
 1. Add USEEIO widgets to [.NET Environmental Education tools](../setup/) for GEEP partner states and countries.  
+-->
 
 
 
+## VI. Crowdsource Editor Team - Google REST App
 
-### Google REST App
-
-1. Google Sheet Crowdsource Edito - A REST process allowing editors to return and update their own row contributions.
+1. Google Sheet Crowdsource Editor - A REST process allowing editors to return and update their own row contributions.
 
 1. Work with a [JAMstack Editor](https://headlesscms.org/) to edit CSV files directly on GitHub using social logins. 
 
-1. [Google Sheet Editor](https://neighborhood.org/editor) for crowdsourcing updates. Code for America Brigades often use Google Sheets to maintain directories, like these maps: [Georgia](https://www.georgia.org/covid19suppliersmap) and [North Carolina](https://nccovidsupport.org/). A social login process is needed to allow contributors to return and update their own Google sheet row data through an online form, without having access to edit rows of other contributors. The set-up needs to take only a minute per sheet, so avoid Zapier or other time-intensive approaches.
-<br><br>
+1. [Google Sheet Editor](../editor) for crowdsourcing updates. Code for America Brigades often use Google Sheets to maintain directories, like these maps: [Georgia](https://www.georgia.org/covid19suppliersmap) and [North Carolina](https://nccovidsupport.org/). A social login process is needed to allow contributors to return and update their own Google sheet row data through an online form, without having access to edit rows of other contributors. The set-up needs to take only a minute per sheet, so avoid Zapier or other time-intensive approaches.
 
-[Contact us](../localsite/info/input/) for additional details and to avoid overlaps. 
 
-<!--
- Document your team's times to help the judges award your contributions and as a basis for you to reward the team members who contribute the most.  
- <br>
--->
+## VII. Zip Code Demographic Team
+
+DONE - Kathryn Winglee created files for all US zip codes.  She used the [uszipcode programmable database (Python)](https://uszipcode.readthedocs.io/01-Tutorial/index.html) - [Github](https://github.com/MacHu-GWU/uszipcode-project) to generate [a data file for each zip code](https://model.earth/zip/io/#zip=30310). Here's the [processing script](https://github.com/modelearth/zip/tree/master/io).
+
+State Dropdown - DONE  Kathryn Winglee has updated our [R-Language script](../community-data/us/) to output dropdown list attributes for [map zoom](../localsite/info/).  
+
+To Do: Update R-Language script to sort states alphabetically. For non-state, add state="false" attribute.
+
+
+
+## VIII. All the Places Team
+
+Output [All the Places](https://www.alltheplaces.xyz/) into zip folders. Save in [zip/io/data](https://model.earth/zip/io/) folders where demographics .json and .md files reside.
+
+
+
+## More
+  
+
+1. [Map starters](start) and [Leaflet route maps](start/routing/) for driving tours and deliveries.
+
+1. <a href="https://jamstack.org">JAM Stack Development</a>
+
+1. Build location profiles using the [Industry Impact Evaluator](info).<!-- Goods & Services Reports - communities with environmental impacts of new technologies -->  
+
+1. Add to [map search filters](../localsite/map/), apply [industry icons](start/dataset/icons/) to charts, or integrate [map samples](start/maps).   
+
+1. Update USEEIO widgets to embed in <a href="https://naaee.github.io/core/" style="white-space: nowrap;">Resource and Event Calendars</a> for environmental educators.
+
+
+1. [RStudio and USEEIOR](../io/naics) - Use LCA methodology to evaluate new technologies [including advanced biofuels](../io/bioeconomy/).  Add updates for electric vehicles  and bioproducts, Local economy inputs and new technology additions to USEEIO. [Details](../io/naics/)  
+
+
+
 <br>
 
 
+# Additional Updates
 
-# Specific Project Tasks
+## Inflow-Outflow Chart
 
-Maintain a list of your time contributions to increase your award potential!  
-[Let us know](../localsite/info/input/) what you're working on to avoid overlaps.  
+[Inflow-Outflow Chart](../io/charts/inflow-outflow/#sectors=326210&page=1&count=10) - 
+<a href="../io/build/slider.html#sectors=322130,327910,541200&page=1&count=10">Widget only</a> - 
+<a href="../io/charts/">All Widgets</a>   
 
-## Bureau of Labor Statistics (BLS) API
+Prevent multiple stepping backing-up by avoiding saving history with each hash change.  
 
-County automobile industry employment for 6-digit NAICS 336111.
-4-digit NAICS resides in "By-Industry" link [here](https://www.bls.gov/cew/downloadable-data-files.htm), but we will be pulling from the Bureau of Labor Statistics (BLS)&nbsp;API. 
+<!--
+The bar could turn green when a commodity has been increased from its default.  
+The bar could turn red when a commodity has been decreased from its default.  
+-->
 
-## Choropleth map using multiple inputs
+<!--
+## Impact Bar Chart
 
-We'll be creating a choropleth map of 
-<a href="../projects/mobility/">industries impacted by transition to EV</a><br>
-
-Starting points [impact map](/io/impact/) and [JS clustering](/community/zip/leaflet/#columns=JobsAgriculture:50;JobsManufacturing:50)
-
-## State Map Zoom
-
-Kathryn Winglee is making this update. 
-- [Update R-Language script](../community-data/us/) to output dropdown list attributes for map zoom.
+React - [View Widget](../io/build/impact_chart_config.html#sectors=334111,334210,334220&perspective=direct&analysis=Consumption) - [Details](../io/charts/) 
 
 
+- Create an example with three columns and one impact area per colums.  
+- Display sector titles to the left of the first column.
+- Display sector name over each bar.  
+- Display description of each indicator
+- Update for use with Darkly bootstrap, similar to [bubble chart](../io/charts/bubble) - click bubble to view impact chart.  
+-->
 
-
-## Bubble Chart
-
-D3 - [View Widget](../io/charts/bubble/) 
-
-- Modify so popups still appear when the containing div is set to position:relative. 
-- Scale to size of containing div during browser resize.
-- Set the default bubble color to red for more pop.
-- Omit red from the scale when other [bubbles are highlighted](../localsite/info/).  
-- Create React version.  
 
 ## Industry-List and Heatmap Mosaic
 
@@ -198,61 +261,39 @@ Additional updates:
 4. Retain capital letters at start of words in section titles.
 5. Add Input-Output total dollar values.  
 
-## Inflow-Outflow Chart
 
-[Inflow-Outflow Chart](../io/charts/inflow-outflow/#sectors=326210&page=1&count=10) - 
-<a href="../io/build/slider.html#sectors=322130,327910,541200&page=1&count=10">Widget only</a> - 
-<a href="../io/charts/">All Widgets</a>
 
-Add Airbender visuals.  
 
-Prevent multiple stepping backing-up by avoiding saving history with each hash change.  
+## Bubble Chart
+
+D3 - [View Widget](../io/charts/bubble/) 
+
+- Modify so popups still appear when the containing div is set to position:relative. 
+- Scale to size of containing div during browser resize.
+- Set the default bubble color to red for more pop.
+- Omit red from the scale when other [bubbles are highlighted](../localsite/info/).  
+- Create React version.  
+
+
+
+##Data Integration 
+
+1. Updates for [Farm Fresh - Federal USDA location data](farmfresh) on maps - initially merged for Aglanta. 
+
+1. Identify sources for the following
+
+- [Vehicle charging station locations](https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC)
+- Areas/chargers using green/clean energy
+- Shared mobility vehicle locations and charging stations
+- Organizations contributing clean energy to the grid
+- Organizations producing green hydrogen
+- Areas with mineral mining resources for batteries
+- Automotive industries by naics
+
 
 <!--
-The bar could turn green when a commodity has been increased from its default.  
-The bar could turn red when a commodity has been decreased from its default.  
--->
-
-<!--
-## Impact Bar Chart
-
-React - [View Widget](../io/build/impact_chart_config.html#sectors=334111,334210,334220&perspective=direct&analysis=Consumption) - [Details](../io/charts/) 
-
-
-- Create an example with three columns and one impact area per colums.  
-- Display sector titles to the left of the first column.
-- Display sector name over each bar.  
-- Display description of each indicator
-- Update for use with Darkly bootstrap, similar to [bubble chart](../io/charts/bubble) - click bubble to view impact chart.  
--->
-
-## Last Airbender
-
-For use as an [elementary school education interface](../../io/charts/inflow-outflow/#sectors=326210&page=1&count=10), the EPA indicators are being organized by Air, Water, Land, and Fire (Energy), Prosperity (Economy) and Health.  
-
-The Airbender categories have been added as Primary and Secondary columns in [LCIA_Indicator_sets.csv](../community-data/us/indicators/LCIA_Indicator_sets.csv) and in the [Bio-Modeling Branch](https://github.com/modelearth/useeior/blob/Bio-Modeling/inst/extdata/USEEIO_LCIA_Indicators.csv).  
-
-Here’s an [Airbender API](https://last-airbender-api.herokuapp.com/) for relating the four “nation” categories to characters.  
-
-## Use of BEA commodities to estimate null industries
-
-To protect the privacy of individual firms, the census omits payroll and empolyee count data for some industries at both the state and county level (like Automobile Manufacturing).  For Georgia, there are [89 industries](../community-data/us/state/ga/industries_state13_naics6_0s.tsv) with only the number of establishments available at both the county and state lever. 
-
-The estimates for these omitted industry values could be generated using the state BEA commodity data with the crosswalk file, or an average from other states could be used (as long as each industry has at least one payroll value in another state).  
-
-##Data Integration
-
-
-1. US Bureau of Economic Analysis - expand on the industry level data in our [Community Info Page](../localsite/info/).  
-
-1. Updates for [Farm Fresh - Federal USDA location data](farmfresh) on maps - initially merged for Aglanta.  
-
-
-1. Preprocess the [uszipcode programmable database (Python)](https://uszipcode.readthedocs.io/01-Tutorial/index.html) - [Github](https://github.com/MacHu-GWU/uszipcode-project) with [zip map](zip/leaflet/).  
 
 1. International [Harmonized System (HS)](impact/harmonized-system) code crosswalk  
-
-<!--
 
 Fix JSON reader in [zip search](zip/#zip=30315)  
 
@@ -279,7 +320,15 @@ National Renewable Energy Laboratory (NREL) - alternative fuel stations
 14. [Climate Change Action Plans](https://www.c2es.org/document/climate-action-plans/) - Incorporate how other states support information exchanges.  
 -->
 
+
+
+[Contact us](../localsite/info/input/) for additional details and to avoid overlaps. 
 <br><br>
+
+<!--
+ Document your team's times to help the judges award your contributions and as a basis for you to reward the team members who contribute the most.  
+ <br>
+-->
 
 <div>
 
