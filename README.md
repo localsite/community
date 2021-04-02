@@ -3,15 +3,14 @@
 <a href="https://www.epa.gov/sciencematters/epa-researchers-working-improve-life-cycle-assessment-capabilities-communities" target="_blank">Working to Improve Life-Cycle Assessment Capabilities for Communities</a><br>
 
 <h3 style="font-weight:400; margin-bottom:0px">
-<div style="font-size: 14px">February to June 2021</div>
+<div style="font-size: 14px">March to July 2021</div>
 Dive Into Data Commons</h3>
-<a href="challenge/">Learn more</a> and expand on <a href="../localsite/map/neighborhood/vaccines/">Vaccine Availability Crowdsourcing</a><br>
+<a href="challenge/">Learn more</a><br>
 
 <h3 style="font-weight:400">
 <div style="font-size: 14px">Fall 2021</div>
 Sustainable Communities Web Challenge
 </h3>
-
 
 We're combing industry analytics, impacts, demographics and machine learning using the EPA's new environmental indicator models. Choose an area below to compete for $10,000 in awards in 2021 using <a href="../io/charts/">new input-output widgets</a> to create interfaces for communities using 24 environmental indicators across 388&nbsp;industries.<br><br>
 
@@ -40,28 +39,35 @@ Teams that contribute to these broad areas have a good chance of earning an awar
 
 Projects use the EPA's [Environmentally-Enabled Input-Output widgets](https://model.earth/io/charts)  
 
-NAICS for <a href="../projects/mobility/">industries impacted by transition to EV</a><br>
 
-[Our county boundary map](/localsite/map/#go=smart) is embedded into [our industry tool](/localsite/info/#go=smart) along with [EPA IO widgets](../io/charts/).  
+## I. Google Data Commons API Team
 
+[Install DataCommons.org Tools](../localsite/info/data/) on your local computer.  
 
-## I. EV Research Team
+Get creative and work toward adding an "[Environment > Impact](https://datacommons.org/place/country/USA?topic=Environment)" section with EPA data.  
 
-Find existing widgets and repos that use the [Charging Station API](https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC)
+Use and improve checkbox heirarchy - [sample](https://datacommons.org/tools/timeline#place=zip%2F30318&statsVar=Count_Person_5To17Years_BornInOtherStateInTheUnitedStates%2C0%2C6%2C1%2C1%2C0__Count_Person_60To61Years_BornInOtherStateInTheUnitedStates%2C0%2C6%2C7%2C1%2C0%2CCount_Person__Count_Person_5To17Years_BornInStateOfResidence%2C0%2C6%2C1%2C1%2C1__WagesAnnual_Establishment%2C9%2C0__Count_Establishment%2C9%2C2&chart=%7B%22count%22%3A%7B%22pc%22%3Afalse%7D%7D)  
+Investigate using [D3Plus](https://d3plus.org/examples/) charts in tandom with [Datausa.io API](https://github.com/DataUSA/datausa-site) which uses [Mondrian REST](https://github.com/ojbc/mondrian-rest#api-usage).  Example: [Automotive Parts](https://datausa.io/profile/naics/automotive-parts-accessories-tire-stores-)
 
-The Apple Electric Car might be produced by Kia in LaGrange, Georgia! How can we interface with their efforts?
+NAICS for <a href="projects/mobility/">industries impacted by transition to EV</a>.  We're adding to a [Motor Vehicle Manufacturing Map](../localsite/info/#show=vehicles) pulled from a [Google Sheet](https://docs.google.com/spreadsheets/d/1OX8TsLby-Ddn8WHa7yLKNpEERYN_RlScMrC0sbnT1Zs/edit#gid=0) to provide county-level EV vs Transmission job totals.  
 
-Find locations scraped by All The Places that list the number and types of charging stations at each location and oversee adding to the scraper. Save as [zip code](https://model.earth/zip/io/#zip=30310) files.
-
-Research sources of additional EV and hydrogen data listed at the bottom of this page.  
+<!--
+Find existing widgets and repos that use the [Charging Station API](https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC). Perhaps the [Open Charge Map API](https://openchargemap.org/site/develop/api) and/or [TomTom](https://developer.tomtom.com/search-api/search-api-documentation/ev-charging-stations-availability).
+--> 
 
 ## II. Python Machine Learning Team
 
-### Python Web Sockets, Javascript, Leaflet Maps
+### Python Flask, Javascript, Leaflet Maps
 
-Sample of embedded [Choropleth Map for Entire Automotive Industry](https://model.earth/localsite/info/#go=vehicles&indicators=VADD&naics=326199,336390,325211,326112,336412,333111,336211,336340,336370,336413,336320,335911,336360,331110,335912,331221,336111,336330&count=20)  
+Predicting outcomes from changes to collections of industries and transitions within industry groups.  
 
-1. Finalize csv output for counties by state using [BLS data from EPA Flowsa](/localsite/info/data/).  Merge columns and save in state folders.  
+COLAB-orating with San Diego: [mcmorgan27/sd-business](https://github.com/mcmorgan27/sd-business/tree/1b22ef0e9231f0d2bcfafcff41e69c9adc9038fd)
+
+Sample of embedded [Choropleth Map for Entire Automotive Industry](https://model.earth/localsite/info/#show=vehicles&indicators=VADD&naics=326199,336390,325211,326112,336412,333111,336211,336340,336370,336413,336320,335911,336360,331110,335912,331221,336111,336330&count=20) using DataUSA.io widget displaying American Community Survey (ACS) Public Use Microdata Sample [PUMS](https://www.census.gov/programs-surveys/acs/microdata/mdat.html) data.  
+<!--
+1. Finalize csv output for counties by state using [BLS data from EPA Flowsa](/localsite/info/data/) - scroll down in page.  Merge columns and save in state folders.  
+-->
+1. [Set-up Flask server](/localsite/info/data/) using DataCommon.org "tools" repo sample.  
 
 1. Document setting up a public website using the Machine Learning Websocket in the first project sample below.
 
@@ -94,9 +100,33 @@ Sample of embedded [Choropleth Map for Entire Automotive Industry](https://model
 1. Update [Django Census Reporter](resources/censusreporter) by staring with the Python 3 Wazimap [fork](resources/censusreporter) used in Africa and India. Integrate US demographic data from Python 2 version. Set up Docker to [deploy to Heroku](https://github.com/datamade/how-to/blob/master/heroku/deploy-a-django-app.md) using a [containerization template](https://github.com/datamade/how-to/tree/master/docker/templates). Learn more [about using Heroku or AWS](https://datamade.us/blog/why-were-switching-to-heroku/).  
 -->
 
+## III. GitHub Actions Demographics Team
+
+Generate static files to drive Data Commons navigation. Crosswalk zipcodes and counties to PUMA regions. This crosswalk resides in DataUSA.io Github repo.  
+
+DONE - State Dropdown. Kathryn Winglee has updated our [R-Language script](../community-data/us/) to output dropdown list attributes for [map zoom](../localsite/info/).  
+
+DONE - Kathryn Winglee created files for all US zip codes.  She used the [uszipcode programmable database (Python)](https://uszipcode.readthedocs.io/01-Tutorial/index.html) - [Github](https://github.com/MacHu-GWU/uszipcode-project) to generate [a data file for each zip code](https://model.earth/zip/io/#zip=30310). Here's the [processing script](https://github.com/modelearth/zip/tree/master/io).
+
+DONE - Kathryn Winglee updated R-Language script to sort states alphabetically. For non-state, add state="false" attribute.
+
+DONE - Pull Data to GitHub. Abrie fixed the [Vaccine dosage pull to GitHub](https://github.com/bbrewington/ga.dph.data/pull/1), now we need to [push into a Google Sheet](https://www.google.com/search?q=Github+Actions+send+data+to+Google+Sheet&oq=Github+A[…]et&aqs=chrome..69i57j69i64.20842j0j1&sourceid=chrome&ie=UTF-8).  
+
+All the Places - Output [All the Places](https://www.alltheplaces.xyz/) into zip folders. Save in [zip/io/data](https://model.earth/zip/io/) folders where demographics .json and .md files reside.  
+
+Pull over demographics reporting interface from [CensusReporter](resources/censusreporter). Retain ability to point at existing PostGreSQL backend while adding ability to pull from Google Data Commons.   
 
 
-## III. React - Sankey Chart Team
+## IV. Crowdsource Editor Team - Google REST App
+
+1. Google Sheet Crowdsource Editor - A REST process allowing editors to return and update their own row contributions.
+
+1. Work with a [JAMstack Editor](https://headlesscms.org/) to edit CSV files directly on GitHub using social logins. 
+
+1. [Google Sheet Editor](../editor) for crowdsourcing updates. Code for America Brigades often use Google Sheets to maintain directories, like these maps: [Georgia](https://www.georgia.org/covid19suppliersmap) and [North Carolina](https://nccovidsupport.org/). A social login process is needed to allow contributors to return and update their own Google sheet row data through an online form, without having access to edit rows of other contributors. The set-up needs to take only a minute per sheet, so avoid Zapier or other time-intensive approaches.
+
+
+## V. React - Input-Output Sankey Chart Team
 
 ### React and USEEIO JSON
 
@@ -112,11 +142,11 @@ Sample of embedded [Choropleth Map for Entire Automotive Industry](https://model
 And/or <a href="https://www.apollographql.com/docs/apollo-server/">Apollo</a> GraphQL for faster dev than the point-to-point nature of REST endpoints.  
 -->
 
-## IV. React - Last Airbender Team
+## VI. React - Last Airbender Interface Team
 
 ### React and Material UI
 
-1. Contribute to our [AWS Amplify React](../amplify/AWS/) repo by activating [Last Airbender indicator sets](../io/charts/inflow-outflow/).  
+1. Contribute to our [AWS Amplify React](../aws/amplify/) repo by activating [Last Airbender indicator sets](../io/charts/inflow-outflow/).  
 
 
 1. Update EPA's <a href="../io/charts/">Embeddable IO Widgets</a> generated from [USEEIO API](https://github.com/USEPA/USEEIO_API) local .json data.  
@@ -132,7 +162,7 @@ Find cool Material UI interfaces that could be applied to our category set menu.
 <p>
 The category set json resides in docs/static/json thanks to Alikah within our <a href="https://github.com/modelearth//amplifyapp">AmplifyApp</a> which is a great place to learn React.
 
-<a href="../amplify/AWS/">We've documented AWS Amplify set up steps</a>.
+<a href="../aws/amplify/">We've documented AWS Amplify set up steps</a>.
 
 <!--as Primary and Secondary columns in <a href="../community-data/us/indicators/LCIA_Indicator_sets.csv">LCIA_Indicator_sets.csv</a> and in the [Bio-Modeling Branch](https://github.com/modelearth/useeior/blob/Bio-Modeling/inst/extdata/USEEIO_LCIA_Indicators.csv).  
 -->
@@ -144,48 +174,26 @@ Here’s an <a href="https://last-airbender-api.herokuapp.com/">Airbender API</a
 
 </div>
 
-## V. .NET Core 5.0 Team
+## VII. .NET Core 5.0 Team
 
-1. Create a "Disposable Database" for editing crowdsourced lists using .csv files hosted in GitHub, Google Sheets, AirTables and/or Azure.  Document your REST process using a [RealWorld example page](https://neighborhood.org/realworld) to integrate frontend and backend tools.
+1. Create a "Disposable Database" for editing crowdsourced lists using .csv files hosted in GitHub, Google Sheets, AirTables and/or Azure.  Document your REST process using a [RealWorld example page](https://neighborhood.org/realworld) to integrate frontend and backend tools.  
+
+1. Add USEEIO widgets to [.NET Environmental Education tools](../setup/) for GEEP partner states and countries.  
 <!--
 Strapi for Amazon AWS - EC2, RDS and S3
 https://strapi.io/documentation/developer-docs/latest/deployment/amazon-aws.html
 
 Azure Data Studio - for Mac to access AWS EC2
 https://github.com/Microsoft/azuredatastudio
-
-1. Add USEEIO widgets to [.NET Environmental Education tools](../setup/) for GEEP partner states and countries.  
 -->
 
 
 
-## VI. Crowdsource Editor Team - Google REST App
-
-1. Google Sheet Crowdsource Editor - A REST process allowing editors to return and update their own row contributions.
-
-1. Work with a [JAMstack Editor](https://headlesscms.org/) to edit CSV files directly on GitHub using social logins. 
-
-1. [Google Sheet Editor](../editor) for crowdsourcing updates. Code for America Brigades often use Google Sheets to maintain directories, like these maps: [Georgia](https://www.georgia.org/covid19suppliersmap) and [North Carolina](https://nccovidsupport.org/). A social login process is needed to allow contributors to return and update their own Google sheet row data through an online form, without having access to edit rows of other contributors. The set-up needs to take only a minute per sheet, so avoid Zapier or other time-intensive approaches.
-
-
-## VII. Zip Code Demographic Team
-
-DONE - Kathryn Winglee created files for all US zip codes.  She used the [uszipcode programmable database (Python)](https://uszipcode.readthedocs.io/01-Tutorial/index.html) - [Github](https://github.com/MacHu-GWU/uszipcode-project) to generate [a data file for each zip code](https://model.earth/zip/io/#zip=30310). Here's the [processing script](https://github.com/modelearth/zip/tree/master/io).
-
-State Dropdown - DONE  Kathryn Winglee has updated our [R-Language script](../community-data/us/) to output dropdown list attributes for [map zoom](../localsite/info/).  
-
-To Do: Update R-Language script to sort states alphabetically. For non-state, add state="false" attribute.
-
-
-
-## VIII. All the Places Team
-
-Output [All the Places](https://www.alltheplaces.xyz/) into zip folders. Save in [zip/io/data](https://model.earth/zip/io/) folders where demographics .json and .md files reside.
-
 
 
 ## More
-  
+
+1. [Our county boundary map](/localsite/map/#go=smart) is embedded into [our industry tool](/localsite/info/#go=smart) along with [EPA IO widgets](../io/charts/).  
 
 1. [Map starters](start) and [Leaflet route maps](start/routing/) for driving tours and deliveries.
 
@@ -280,7 +288,7 @@ D3 - [View Widget](../io/charts/bubble/)
 
 1. Updates for [Farm Fresh - Federal USDA location data](farmfresh) on maps - initially merged for Aglanta. 
 
-1. Identify sources for the following
+1. Research sources of additional EV and hydrogen vehicle data: 
 
 - [Vehicle charging station locations](https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC)
 - Areas/chargers using green/clean energy
@@ -288,7 +296,7 @@ D3 - [View Widget](../io/charts/bubble/)
 - Organizations contributing clean energy to the grid
 - Organizations producing green hydrogen
 - Areas with mineral mining resources for batteries
-- Automotive industries by naics
+- [Automotive industries by naics](../community/projects/mobility/)
 
 
 <!--
