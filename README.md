@@ -1,3 +1,4 @@
+### Project Areas
 <h1 class="h1-home">2021 Programming Events</h1>
 
 <a href="https://www.epa.gov/sciencematters/epa-researchers-working-improve-life-cycle-assessment-capabilities-communities" target="_blank">Working to Improve Life-Cycle Assessment Capabilities for Communities</a><br>
@@ -7,9 +8,12 @@
 Dive Into Data Commons</h3>
 <a href="challenge/">Learn more</a><br>
 
+<h3 style="margin-bottom:0px">Code for America - Nav and Map Integrations</h3>
+<a href="https://neighborhood.org/public-tree-map">Learn more</a><br>
+
 <h3 style="font-weight:400">
 <div style="font-size: 14px">Fall 2021</div>
-Sustainable Communities Web Challenge
+Sustainable Communities "Beyond Carbon" Web Challenge
 </h3>
 
 We're combing industry analytics, impacts, demographics and machine learning using the EPA's new environmental indicator models. Choose an area below to compete for $10,000 in awards in 2021 using <a href="../io/charts/">new input-output widgets</a> to create interfaces for communities using 24 environmental indicators across 388&nbsp;industries.<br><br>
@@ -42,20 +46,21 @@ Projects use the EPA's [Environmentally-Enabled Input-Output widgets](https://mo
 
 ## I. Google Data Commons API Team
 
-[Install DataCommons.org Tools](../localsite/info/data/) on your local computer.  
+[Install DataCommons.org Tools](../localsite/info/data/datacommons/) on your local computer.  
 
-Get creative and work toward adding an "[Environment > Impact](https://datacommons.org/place/country/USA?topic=Environment)" section with EPA data.  
+Pull commute times from the Google Data Commons API and Walkability data from one of the free API's services that provide Walk Scores, Transit Scores and Bike Scores: [RapidAPI.com](https://rapidapi.com/theapiguy/api/walk-score/details) or [WalkScore.com](https://www.walkscore.com/professional/api.php)  
 
-Use and improve checkbox heirarchy - [sample](https://datacommons.org/tools/timeline#place=zip%2F30318&statsVar=Count_Person_5To17Years_BornInOtherStateInTheUnitedStates%2C0%2C6%2C1%2C1%2C0__Count_Person_60To61Years_BornInOtherStateInTheUnitedStates%2C0%2C6%2C7%2C1%2C0%2CCount_Person__Count_Person_5To17Years_BornInStateOfResidence%2C0%2C6%2C1%2C1%2C1__WagesAnnual_Establishment%2C9%2C0__Count_Establishment%2C9%2C2&chart=%7B%22count%22%3A%7B%22pc%22%3Afalse%7D%7D)  
+Add an "[Environment > Impact](https://datacommons.org/place/country/USA?topic=Environment)" section to Google Data commons using the [EPA IO Widgets](../../io/charts/).  
+
+Use and improve the Google Data Common's checkbox heirarchy - [sample](https://datacommons.org/tools/timeline#place=zip%2F30318&statsVar=Count_Person_5To17Years_BornInOtherStateInTheUnitedStates%2C0%2C6%2C1%2C1%2C0__Count_Person_60To61Years_BornInOtherStateInTheUnitedStates%2C0%2C6%2C7%2C1%2C0%2CCount_Person__Count_Person_5To17Years_BornInStateOfResidence%2C0%2C6%2C1%2C1%2C1__WagesAnnual_Establishment%2C9%2C0__Count_Establishment%2C9%2C2&chart=%7B%22count%22%3A%7B%22pc%22%3Afalse%7D%7D)  
 
 Add highlighted colors similar to BEA  
-[View sample](https://apps.bea.gov/iTable/iTable.cfm?reqid=150&step=3&isuri=1&table_list=5013&categories=compbyind), click Table > Bar Chart and choose industries:
-
+[View sample](https://apps.bea.gov/iTable/iTable.cfm?reqid=150&step=3&isuri=1&table_list=5013&categories=compbyind), click Table > Bar Chart and choose industries.
 
 
 Investigate using [D3Plus](https://d3plus.org/examples/) charts in tandom with [Datausa.io API](https://github.com/DataUSA/datausa-site) which uses [Mondrian REST](https://github.com/ojbc/mondrian-rest#api-usage).  Example: [Automotive Parts](https://datausa.io/profile/naics/automotive-parts-accessories-tire-stores-)
 
-NAICS for <a href="projects/mobility/">industries impacted by transition to EV</a>.  We're adding to a [Motor Vehicle Manufacturing Map](../localsite/info/#show=vehicles) pulled from a [Google Sheet](https://docs.google.com/spreadsheets/d/1OX8TsLby-Ddn8WHa7yLKNpEERYN_RlScMrC0sbnT1Zs/edit#gid=0) to provide county-level EV vs Transmission job totals.  
+NAICS for <a href="projects/mobility/">industries impacted by transition to EV</a>.  We're adding to a [Motor Vehicle Manufacturing Map](../localsite/info/#show=vehicles) pulled from a [Google Sheet](https://docs.google.com/spreadsheets/d/1OX8TsLby-Ddn8WHa7yLKNpEERYN_RlScMrC0sbnT1Zs/edit#gid=0) to provide prospective job totals for Electric Vehicle prodution (including Hydrogen) and Internal Combustion Engine (ICE) production.    
 
 <!--
 Find existing widgets and repos that use the [Charging Station API](https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC). Perhaps the [Open Charge Map API](https://openchargemap.org/site/develop/api) and/or [TomTom](https://developer.tomtom.com/search-api/search-api-documentation/ev-charging-stations-availability).
