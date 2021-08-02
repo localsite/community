@@ -1,5 +1,5 @@
 
-# Advanced (Second-Generation) Biofuels
+## Advanced (Second-Generation) Biofuels
 
 <!-- Biobased Energy Alternatives Biobased Fuel Sources -->
 A framework for circular economies combining <b>non-food biomass</b> with long-term carbon capture
@@ -8,7 +8,7 @@ Advanced (second-generation) biofuels are made from non-food biomass and include
 
 Our work investigates the long-term carbon capture potential of three new biofuel industries: 
 
-A. Gas Fermentation (324110B1) - Syngas fermentation to ethanol to isobutene to higher olefins to fuels.  
+A. Gas Fermentation (324110B1) - Syngas fermentation to ethanol to isobutylene to higher olefins to fuels.  
 
 B. Thermochemical (324110B2) - Syngas to liquid fuels via Fischer-Tropsch.  
 
