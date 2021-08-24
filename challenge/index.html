@@ -106,20 +106,19 @@ https://model.earth/community/challenge/
         display:none;
     }
 }
-#sidecolumnX {
-    display: none !important;
-}
-#sidecolumnContentX {
-    display: none !important;
-}
 #logoholderside {
     display: none !important;
 }
 </style>
 
-<div class="georgia-hide" style="position:relative; background:#aaa"><!-- #dae8eb -->
 
-    <!-- psd resides in smartdata -->
+<!-- psd resides in smartdata -->
+<!-- class="georgia-hide" -->
+<!-- #dae8eb -->
+<!--
+<div style="position:relative; background:#aaa">
+
+    
     <div style="background-color: #dae8eb; text-align: center; overflow: auto; padding:0px; border:0px">
         <div style="max-width:1400px">
             <img src="../img/overview/banner-1.png">
@@ -127,8 +126,38 @@ https://model.earth/community/challenge/
         </div>
     </div>
 </div>
+-->
+
+<div class="georgia-hideX" style="position:relative; background:#aaa; max-height:200px"><!-- #dae8eb -->
+
+    <!-- psd resides in smartdata -->
+    <div style="background-color: #dae8eb; margin: 0 auto; overflow: auto; padding:0px; border:0px">
+        <div style="max-width:1400px; text-align:left; position:relative; min-height:350px">
+
+            <img src="../img/overview/banner-2.png" class="hideMobile" style="opacity:0.3; width:100%; max-width:600px; padding-top:20px; padding-right:20px; position:absolute; left:300px; bottom:0px">
+
+            <!--
+            <img src="img/overview/banner-1.png">
+            -->
+            <div style="float:left">
+                <div class="hero-text" style="padding:30px 15px 0 40px">
+
+                    <img src="../img/logo/code-for-america-and-earth.png" style="width:100%;max-width:220px;padding:10px 0 15px 0"><br>
+                    <br>
+                </div>
+
+            </div>
+            <div style="float:right; padding:20px 50px 0 0; text-align: center">
+                
+                <img src="../img/logo/epa-circle.png" style="width:100%;max-width:160px"><br>
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 <div style="clear:both"></div>
+
 
 
 <div class="content contentpadding" style="overflow:auto;">
@@ -140,14 +169,29 @@ https://model.earth/community/challenge/
     -->
 
     <div class="pagecard">
+
         <div class="cardstyle">
+            <!--
             <div class="leftLogo">
                 <img src="../img/logo/epa.png" style="width:100%; max-width:200px">
             </div>
+            -->
             <div style="overflow:auto">
+
+                <div style="font-size:32px;">
+                    Sustainable Communities Web Challenge
+                </div>
+
+                <div style="font-size:20px; line-height: 1.2em;">
+                  
+                  <div style="font-size:25px;">Saturday, Oct 2, 2021: 10AM to 6PM ET</div>
+                </div>
+                <br>
+
                 <div id="readmeDiv"></div>
             </div>
         </div>
+
     </div>
 
     <div class="pagecard">
@@ -158,14 +202,9 @@ https://model.earth/community/challenge/
                 <div id="navcolumn" style="position:relative; float:left; text-align:left; margin-right: 30px">
                 </div>
 
-                <div style="float:left; text-align:left; margin-right: 30px">
-                    <a href="https://codeforamerica.org"><img src="../img/logo/code-for-america-and-earth.png" style="max-height:120px; margin:50px 100px 20px 0"></a><br>
-
-                    <!--
-                    <a href="challenge/" class="hideMobile1200"><img src="../img/overview/earth-happy.png" class="hideMobile" style="float:left; max-height:300px; margin-top:0px; margin-bottom:20px"></a>
-                    -->
-
-                </div>
+                <!--
+                <a href="challenge/" class="hideMobile1200"><img src="../img/overview/earth-happy.png" class="hideMobile" style="float:left; max-height:300px; margin-top:0px; margin-bottom:20px"></a>
+                -->
             
                 <style>
                 #introlist h3 {
@@ -178,23 +217,38 @@ https://model.earth/community/challenge/
 
                     <h2 style="margin-bottom:10px; font-size: 28px;">Steps for creating your entry</h2>
 
-                    <h3>1. Identify your community of interest</h3>
-                    A community can be a neighborhood, city, county, region of a state, or multiple states and may have a theme associated with it.<br>
+                    <h3>1. Identify your community of interest and register</h3>
+                    Your community can be a neighborhood, city, county, region of a state, or multiple states. Indicate your community when you <a href="registration/">register online</a>.
+                    <br>
                     
-                    <h3>2. Explore our community apps and learn how to make your own</h3>
-                    Review the <a href="https://model.earth/apps">apps</a> for your community of interest<br>. 
-                    Read about <a href="https://model.earth/localsite/start/">how to create your own</a>
-                                        
-                    <h3>3. Join or form a new team</h3>
-                    Check if the community of interest already has formed a team. Join that team or start you own.<br>
-                    An ideal tema might involve community reps and include designers, HTML editors, coders and data contributors.
+                    <h3>2. Discover important local issues based on the industries in your community</h3>
+                    Use our <a href="../../localsite/info/">industry comparison tool</a> to identify local issues.<br>
 
-                    <h3>4. Create beautiful sites and add new functionality</h3>
-                    Create new visuals for your community. Embed new or existing tools, components in your site<br>
+                    <h3>3. Join or form a new team</h3>
+
+                    Create or join a team for your city or community.  You may also form a coding/design team focused on specific <a href="../../community/projects/">project areas</a>. You can return to your registration page later to add team and project info. Use the link in the email you receive during registration.<br>
+
+                    <h3>4. Create a community portal</h3>
+                    Check out our existing <a href="../../io/">community portals</a> and learn how to make your own. The easiest way is to fork the <a href="../../apps">apps</a> directory, then copy and edit an existing app folder. Also, clone the <a href="https://github.com/modelearth/localsite">localsite repo</a> into the same webroot as the apps folder to provide support files. Read more about <a href="../../localsite/start/">how to create your own local site</a>.<br>
+                                        
+                    <h3>5. Create beautiful community tools and add new functionality</h3>
+                    Create new visuals and content for your community portal. Embed new or existing <a href="../../io/charts/">USEEIO widgets</a> in your site<br>
                     
                     <!--Show before-and-after scenarios, create comparisons, and <a href="../../apps/">share apps</a> within your favorite websites<br><br>-->
                     <!--<a href="../io/team/">Contact Us for Pointers</a> | -->
                     <!-- <a href="meetups/">Join us on Slack</a> | <a href="../projects/">View Project Areas</a><br><br> -->
+                    <br>
+
+                    <b>Learn more:</b> <a href="/how">How to Prepare a Winning Entry</a><br><br>
+
+                    <!-- Also update in community index.html footer -->
+                    <div style="margin-top:20px">
+                    <a href="registration/" class="btn btn-success">Register to participate</a> &nbsp;
+                     <!-- <a href="../projects/" class="btn btn-warning">View Project Areas</a> -->
+                    <a href="meetups" class="btn btn-danger">Meetups and Slack Channels</a>
+                    </div>
+                    <br>
+
                 </div>
             </div>
         </div>
@@ -259,6 +313,13 @@ https://model.earth/community/challenge/
     <br>
     -->
     
+    <div style="margin-top:30px">
+        <a href="../../community/challenge/registration/" class="btn btn-success">Register Online</a>
+        <a href="../../community/projects" class="btn btn-warning">Project Areas</a>
+        <a href="../../community/challenge/meetups/" class="btn btn-danger">Meetups</a>
+    </div>
+    <br><br>
+
 </div>
 
 </body>

@@ -5,7 +5,9 @@ Stand-alone examples of formatting and displaying community data.
 <a href="https://model.earth/community/start/">View as website</a>
 </div>
 
-[Copy an existing front-end sample page](../../apps/) within the [Apps Repo](https://github.com/modelearth/apps/) to get started quickly.  
+<a href="../challenge/">Sustainable Communities Web Challenge</a><br>
+<a href="../challenge/how/">How to prepare a winning entry!</a><br><br>
+<b>Quick start:</b> To create a locat site portal, [fork the Apps repo](../../apps/) and copy the [base starter folder](../../apps/base/).  
 
 ## [1. Start a local website](../../localsite/start)  
 ## [2. Input-Output Widgets](../../io/charts)  
