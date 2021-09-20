@@ -1,9 +1,21 @@
-## React - Inflow-Outflow Charts
+## React/D3 - Sankey Chart
+
+1. Update the [Sankey D3 Chart](../../../io/charts/sankey/) data formatting to use the same process as the [USEEIO inflow-outflow widget](../../../io/build/iochart.html#sectors=333613,335912,336111&page=1&count=10).  
+
+1. Info on [How to edit IO widgets](../../../io/charts/).
+
+1. See sample [visualizations](../../start/charts/) of material flow charts.
+
+1. Normalization input and output so sides of Sankey are even.
+
+<!--
+And/or <a href="https://www.apollographql.com/docs/apollo-server/">Apollo</a> GraphQL for faster dev than the point-to-point nature of REST endpoints.  
+-->
 
 
-[Inflow-Outflow Chart](../../io/charts/inflow-outflow/#sectors=326210&page=1&count=10) - 
-<a href="../../io/build/slider.html#sectors=322130,327910,541200&page=1&count=10">Widget only</a> - 
-<a href="../../io/charts/">All Widgets</a>   
+## React - IO Chart
+
+[Inflow-Outflow Chart](../../../io/charts/inflow-outflow/#sectors=326210&page=1&count=10) - <a href="../../../io/build/iochart.html#sectors=322130,327910,541200&page=1&count=10">Widget only</a> - <a href="../../../io/charts/">All Widgets</a>   
 
 Prevent multiple stepping backing-up by avoiding saving history with each hash change.  
 
@@ -28,11 +40,6 @@ React - [View Widget](../../io/build/impact_chart_config.html#sectors=334111,334
 - Display description of each indicator
 - Update for use with Darkly bootstrap, similar to [bubble chart](../../io/charts/bubble) - click bubble to view impact chart.  
 -->
-
-
-## React - Industry-List and Heatmap Mosaic
-
-React - [View Widget](../../io/build/sector_list.html?view=mosaic&count=50) - [All Widgets](../../io/charts/) 
 
 These are posted as [USEEIO-widget GitHub issues](https://github.com/USEPA/useeio-widgets/issues)  
 
@@ -69,7 +76,7 @@ Action Menu
     View Report  
 
 2. When choosing "View Inflow-Outflow" redirect to:
-https://thetisiboth.github.io/useeio-widget-builds/slider.html#sectors=333613,335912,336111
+https://thetisiboth.github.io/useeio-widget-builds/iochart.html#sectors=333613,335912,336111
 
 3. Briefly highlight the "Action" menu with blue when checkboxes are clicked. 
 
@@ -77,28 +84,29 @@ https://thetisiboth.github.io/useeio-widget-builds/slider.html#sectors=333613,33
 
 5. Add a "View Mosaic" option to the input-output sort menus
 
-
-
+<!--
 Optimization for web - Decimal removal and restoration ([Issue 54](https://github.com/USEPA/useeio-widgets/issues/54))
+-->
 
+## React - Heatmap Mosaic
 
+[View Widget](../../../io/build/sector_list.html?view=mosaic&count=50) - [All Widgets](../../../io/charts/) 
 
-## Bubble Chart
+## JQuery/D3 - Bubble Chart
 
-D3 - [View Widget](../../io/charts/bubble/) 
+[On Industry Page (at bottom)](../../../localsite/info/#state=GA) - [Stand-Alone Widget (inactive)](../../../io/charts/bubble/) 
 
+- Adjust intial darkness - seems to be overlapping itself
 - Modify so popups still appear when the containing div is set to position:relative. 
-- Scale to size of containing div during browser resize.
-- Set the default bubble color to red for more pop.
-- Omit red from the scale when other [bubbles are highlighted](../../localsite/info/).  
-- Create React version.  
+- Scale to size of containing div during browser resize. 
 
 
-##Data Integration
+<!--
+
+## Data Integration
 
 - International [Harmonized System (HS)](../impact/harmonized-system) code crosswalk  
 
-<!--
 
 1. 
 
