@@ -39,6 +39,7 @@
 <body>
 <script>
   //loadMarkdown("README.md", "readmeDiv", "_parent");
+  loadMarkdown("../../io/template/label.md", "widgetsDiv", "_parent");
   loadMarkdown("profile-editor/README.md", "profileDiv", "_parent");
   loadMarkdown("io/README.md", "ioDiv", "_parent");
   loadMarkdown("github-actions/README.md", "githubDiv", "_parent");
@@ -47,6 +48,7 @@
   loadMarkdown("cinematic/README.md", "cinematicDiv", "_parent");
   loadMarkdown("maps/README.md", "mapsDiv", "_parent");
   loadMarkdown("more.md", "moreDiv", "_parent");
+  loadMarkdown("related.md", "relatedDiv", "_parent");
   // param.startTitle = "Model Earth"; // Trigger header
 </script>
 
@@ -161,6 +163,7 @@
     -->
 
     <a href="../../apps/">Starter Pages</a> - Copy and add parameters<br>
+    <a href="../../community/projects/#widgets">UX/UI</a> - Mini & Super Widgets<br>
     <a href="../../community/projects/#profile-editor">JQuery/React</a> - Environmental Profile Editor<br>
     <a href="../../community/projects/#io">React/JS</a> - Inflow-Outflow and Sankey Charts<br>
     <a href="../../community/projects/#github-actions">Python/R</a> - GitHub Actions Data Pipeline<br>
@@ -172,15 +175,30 @@
     <br>
     <a href="../../apps/smm/">3.0 Mockup</a> - Lifecycle Tools<br><br>
 
-    Challenge participants are encouraged to contribute updates to the shared <a href="../../apps/">community page</a> processes.<br>
-    All entries should include local settings in their community portal to filter <a href="../../io/charts/">USEEIO widget IO charts</a>.<br>
+    Challenge participants are creating pages in the shared <a href="../../apps/">community pages</a> apps repo.<br>
+    All entries should include <a href="../../localsite/">parameter settings</a> to filter <a href="../../io/charts/">USEEIO widget IO charts</a> by location, impact and/or goods and services.<br><br>
 
+    <!--
     <h4>Immediate Project Needs</h4>
     1. Create a node script in the "apps" repo that pulls three <a href="../../localsite/start/">ModelEarth repos</a> (localsite, io and apps) into one local "webroot".<br><br>
+    -->
 
-    2. For our Environmental Product Declarations (EPD) map, optimize <a href="../../io/template/feed/">our call to the openEPD API</a> to fetch fewer fields so the map on our <a href="../../../io/template/">Impact Profile Template page</a> loads faster. You'll find the "openEPD" settings in our <a href="../../../localsite/js/map.js">localsite/js/map.js</a> file. Modify the API URL to select fields to display on our <a href="../../io/template/">EPD Profile labels</a>.<br><br>
+    
+    <section id="widgets">
+    <div class="pagecard">
+        <div class="cardstyle" style="padding-bottom: 0px">
+          <div id="widgetsDiv"></div>
+        </div>
+    </div>
+    </section>
 
-    3. Create a label generator in React or JQuery:<br><br>
+    <section id="cinematic">
+    <div class="pagecard">
+        <div class="cardstyle">
+          <div id="cinematicDiv"></div>
+        </div>
+    </div>
+    </section>
     
     <section id="profile-editor">
     <div class="pagecard">
@@ -222,14 +240,6 @@
     </div>
     </section>
 
-    <section id="cinematic">
-    <div class="pagecard">
-        <div class="cardstyle">
-          <div id="cinematicDiv"></div>
-        </div>
-    </div>
-    </section>
-
     <section id="maps">
     <div class="pagecard">
         <div class="cardstyle">
@@ -246,6 +256,9 @@
     </div>
     </section>
 
+    <section id="google">
+        <div id="relatedDiv"></div>
+    </section>
 
     <div class="local" style="float:left; padding-top:0px; clear:both; display:none">
 

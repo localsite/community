@@ -1,14 +1,8 @@
+## React - YAML Profile Editor
 
-## JQuery/React - Environmental Profile Directory - YAML Editor
+We're building profiles based on Environmental Product Declarations (EPD). 
 
-We'll be updating a metadata editing process created by Italy to edit any entity profile stored on GitHub.  
-We're combining the best of these two lable styles by placing only the number on the right side.
 
-<div style="border:1px solid #ccc; padding:15px; display: inline-block; margin-bottom:10px">
-<a href="../../../io/template/"><img src="../../../io/template/img/2-labels.png" style="width:100%; max-width:600px"></a>
-</div>
-
-View our [impact profile summaries inspired by "nutritional labels"](../../../io/template/) for communities, companies, products and individuals.  
 
 [Our upcoming profile-editor](https://modelearth.github.io/profile-editor) is a fork of Italy's publiccode-editor which saves Metadata settings in a file residing on GitHub. [Clone our Fork](https://github.com/modelearth/profile-editor). Code for America's version saves directly to GitHub. Our update will allow the form to be viewed before logging into GitHub.  
 
@@ -27,6 +21,8 @@ TO DO:
 1. Store additional entity info for organizations and individuals in a file called profile.yml.  
 
 More about Code for America's [Public Code Pusher](https://brigade.cloud/projects/publiccode-helper/).  
+
+We'll optimize our <a href="../../io/template/feed/">our call to the openEPD API</a> for the <a href="../../../localsite/info/?show=openepd&mapview=state&state=GA">OpenEPD map display</a> to load faster by fetching fewer fields. You'll find the "openEPD" settings in our <a href="../../../localsite/js/map.js">localsite/js/map.js</a> file.<br><br>
 
 Possible EDP form sample: [ClimateEarth.com demo](https://www.climateearth.com/command-qc-demo-sign-up/)  
 Also, [GreenDelta Java EPD editor](https://github.com/GreenDelta/epd-editor)  
