@@ -24,13 +24,13 @@ https://docs.google.com/spreadsheets/d/1hnRbFDasf6rx3VS8xJ_oziF6_7laluNfZmgo6-ZD
 
 <h4>Immediate Needs</h4>
 
-Optimize the <a href="https://model.earth/io/template/feed/">Building Transparency feed display</a> so <a href="https://model.earth/localsite/info/?show=openepd&mapview=state#state=GA">map loads faster</a>.
+Optimize the <a href="../../io/template/feed/">Building Transparency feed display</a> so <a href="https://model.earth/localsite/info/?show=openepd&mapview=state#state=GA">map loads faster</a>.
 
 Pull list of local project/repair needs from <a href="http://dev.seeclickfix.com/">See-Click-Fix open311 API</a>.
 
 Update the <a href="../../apps/beyondcarbon/#state=NC">Beyond Carbon json display</a> to use the new <a href="https://github.com/modelearth/beyond-carbon-scraper">Beyond Carbon Scraper and Fuser</a>
 
-Our <a href="https://docs.google.com/document/d/1uqPZ_9hPP7q3_Pc2JugjQKTB94ePRG0vwshqfyqm4R0/edit">Democracy Now Scope of Work</a>
+Our <a href="https://docs.google.com/document/d/1uqPZ_9hPP7q3_Pc2JugjQKTB94ePRG0vwshqfyqm4R0/edit">Democracy Lab Scope of Work</a>
 
 <!--
 1. Create a node script in the "apps" repo that pulls three <a href="../../localsite/start/">ModelEarth repos</a> (localsite, io and apps) into one local "webroot".<br><br>
