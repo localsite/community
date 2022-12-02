@@ -1,4 +1,4 @@
-About our secret sauce: [We're using Figma, Storybook, NextJS, Tailwind and TypeScript](https://news.shardlabs.io/storybook-tailwind-next-js-with-typescript-5a2486f905ec)
+<b>New:</b> <a href="https://model.earth/country-data/map/">3D Globe with Timeline</a> - Dev for OpenStreetMap<br>
 
 <a href="../../apps/">Starter Pages</a> - Copy and add parameters
 <a href="../../community/projects/#widgets">Impact UX/UI</a> - Impact Label Widgets

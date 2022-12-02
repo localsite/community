@@ -2,21 +2,22 @@
 <html lang="en-us">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2021 Sustainable Communities - Input-Output Model</title>
+<title>Sustainable Communities - Input-Output Model</title>
 <link rel="icon" type="image/x-icon" href="../img/logo/favicon.png" />
 <link type="text/css" href="../../localsite/css/base.css" rel="stylesheet" id="/localsite/css/base.css" />
 
 <script type="text/javascript" src="../../localsite/js/showdown.min.js" id="/localsite/js/showdown.min.js"></script>
 <script type="text/javascript" src="../../localsite/js/jquery.min.js" id="/localsite/js/jquery.min.js"></script>
 
-<!-- ?sidecolumn=community/nav.html -->
+<!-- ?sidecolumn=community/nav.html ?display=locfilters&sidecolumn=community/nav.html&material_icons=true-->
 <script type="text/javascript" src="../../localsite/js/localsite.js"></script>
 <!--
 navigation.js has a conflict with reveal
--->
-<script type="text/javascript" src="../../localsite/js/navigation.js" id="/localsite/js/navigation.js"></script>
 
+BUG: Have to call 
+-->
 
 <!-- For Facebook -->
 <meta property="og:title" content="Sustainable Communities Input-Output Modeling Tools" />
@@ -55,7 +56,7 @@ navigation.js has a conflict with reveal
 <link rel="stylesheet" href="../../localsite/css/leaflet.css" />
  <!-- Resides AFTER Leaflet's CSS -->
 <script src="../../localsite/js/leaflet.js" id="/localsite/js/leaflet.js"></script>
-<script src="../js/d3/d3.v5.min.js"></script>
+<script src="../js/d3/d3.v5.min.js" id="/localsite/js/d3.v5.min.js"></script>
 <!--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
 -->
@@ -65,6 +66,11 @@ navigation.js has a conflict with reveal
   <link href="../../localsite/css/leaflet.icon-material.css" rel="stylesheet">
   <script src="../../localsite/js/leaflet.icon-material.js" id="/localsite/js/leaflet.icon-material.js"></script>
 
+  <script>
+    $(document).ready(function () {
+      //showSearchFilter();
+    });
+  </script>
   <style>
     h2 { font-size: 18px; }
 
@@ -115,19 +121,23 @@ navigation.js has a conflict with reveal
         max-width: 200px;
       }
     }
+    .slides h4 {
+        font-weight: 400;
+      }
     @media (min-width: 1001px) {
       .slides section {
         padding-top: 100px;
         min-height: 1000px;
       }
       .slides h1 {
-        font-size: 64px;
+        font-size: 58px;
       }
       .slides h2 {
-        font-size: 42px;
+        font-size: 38px;
       }
       .slides h3 {
-        font-size: 36px;
+        font-size: 28px;
+        line-height: 40px;
       }
       .slides h4 {
         font-size: 22px;
@@ -197,8 +207,6 @@ navigation.js has a conflict with reveal
     }
   </style>
 
-  <link rel="stylesheet" href="../../localsite/css/map.css" />
-
 </head>
 <body>
 
@@ -229,34 +237,47 @@ navigation.js has a conflict with reveal
 
 <div class="reveal">
 
-<div id="allsections" class="slides">
+<!-- id="allsectionsX" class="slides" -->
+<div>
 
-  <section style="margin-top:-80px">
+  <!-- z-index:-1 allows search filters to overlap -->
+  <section style="margin-top:-80px; z-index:-1">
+
+    <div style="position:absolute;z-index:-1; width: 100%; top:1px; bottom:1px; opacity:.1; background:#dae8eb">
+        
+            <img src="../../apps/ev/img/hero/andrew-roberts-charging.jpg" style="width:100%">
+        
+    </div>
+
     <div class="content contentpadding">
 
       
 
       <br>
-      <img class="logoImg" src="../img/logo/epa.png" style="width:200px; float:left; margin-right:40px">
+      <img class="logoImg" src="../img/logo/epa.png" style="width:180px; float:left; margin-right:40px">
 
       <div style="float:left; max-width: 600px">
-        <h1 style="padding-top: 0px; margin-top: -10px; margin-bottom: 0px">Lifecycle Tools<br>for Communities</h1>
+        <!-- Lifecycle Tools<br>for Communities -->
+        <!--
+        <h3 style="font-size: 16px;"><a href="/apps/">Product Life Cycle Assessment (LCA) - Sustainability Apps for Communities</a></h3>
+        -->
+        <h1 style="padding-top: 0px; margin-top: 28px; margin-bottom: 0px; font-size: 54px;">Product Lifecycle Tools</h1>
         <!-- INFO&nbsp;SESSION -->
         <h4>US Environmentally Extended Input-Output (USEEIO) Model</h4>
         <br><br>
+
       </div>
 
       <div style="clear: both;"></div>
       <hr style="margin-bottom:12px"><br>
 
-      <div style="float:right; max-width:520px">
-        <h4>
-        <b>The EPA's impact indicators include:</b><br>
+      <div style="float:left; max-width:520px; font-size:17px; margin-right:50px">
+        
+        <b>Impact indicators include:</b><br>
         <a href="../../localsite/info/#indicators=JOBS">Job Levels</a>, <a href="../../localsite/info/#indicators=VADD">Value-Added</a>, <a href="../../localsite/info/#set=AIR&indicators=GHG,GCC,MGHG,OGHG,HRSP,OZON,SMOG,HAPS">Air&nbsp;Quality</a>, <a href="../../localsite/info/#indicators=GHG">Greenhouse Gas Emissions</a>, 
         <a href="../../localsite/info/#set=energy&indicators=ENRG,NNRG,RNRG">Energy</a>, <a href="../../localsite/info/#set=water&indicators=WATR,ACID,EUTR,ETOX">Water</a>, <a href="../../localsite/info/#set=land&indicators=LAND,MNRL,PEST,METL,CRHW,CMSW,FMSW,CCDD">Land Use</a> and <a href="../../localsite/info/#set=health&indicators=HTOX,HCAN,HNCN,HTOX,HRSP">Health Factors</a> for 389&nbsp;industry sectors using data from:<br>
-        </h4>
+        <br>
 
-        <h4>
         <div style="line-height: 1.7em;">
           <!-- US Department of Commerce - parent of BEA -->
           <span style="color:#4c7fc4">✪</span> US Bureau of Economic Analysis (BEA)<br>
@@ -265,33 +286,30 @@ navigation.js has a conflict with reveal
           <span style="color:#4c7fc4">✪</span> US Census Bureau County Business Patterns<br>
           <span style="color:#4c7fc4">✪</span> Contributions from State and Local Agencies
         </div>
-        </h4>
+
+        <a href="/localsite/info/data/" style="font-size:15px;margin-top:10px;display:inline-block;">More Data Sources</a> | 
+        <a href="/localsite/tools/" style="font-size:15px;margin-top:10px;display:inline-block;">View Tools</a><br>
 
         <br>
       </div>
 
-      <div style="margin-right:30px">
+      <div style="margin-right:10px; margin-right:30px; font-size:15px;">
 
+       
+       <b>Loren Heyns, Programmer Analyst</b><br>
+       Georgia Department of Economic Development<br>
+       Center of Innovation for Energy Technology<br><br>
         
+        <b>Wesley Ingwersen, EPA Project Engineer</b><br>
+        US Enviromental Protection Agency<br>
+        Southeast Region #4
 
-        <h3 style="margin-bottom:10px">Loren Heyns</h3>
-        <h5>
-        <!--
-        Code for America - Model.earth Lifecycle.tools<br>
-        -->
-        Georgia Center of Innovation, Energy Technology</h5>
-        </h3>
-
-        <h3 style="margin-bottom:10px">Wesley Ingwersen</h3>
-        <h5>US Enviromental Protection Agency<br>
-        <!--
-        Southeast Region #4</h5>
-        -->
+        <br><br>
         
-        <br><br><br>
+        <a href="../../io/team/">More contributors</a> - <a href="../../io/communities/">Opportunities for communities</a><br>
+        <a href="/localsite/start">Fork our GitHub repos</a> to contribute additions.<br><br>
 
-        
-        <a href="../../io/about/api/">More Data Sources</a>
+        Search <a href="https://buildingtransparency.org/ec3/epds">Environmental Product Declarations (EPDs)</a>
         
         
         <div style="clear:both"></div>
@@ -371,9 +389,6 @@ navigation.js has a conflict with reveal
         <img src="../img/logo/epa.png" style="width:120px; float:left; margin-right:55px; margin-bottom:30px">
         <img src="../img/logo/georgia.png" style="width:145px; float:left; margin-top: -4px; margin-left:3px; margin-right:50px; margin-bottom:30px">
         <img src="../img/logo/code-for-america-and-earth.png" style="width:250px; float:left; margin-left:3px; margin-right:60px">
-        <img src="../img/logo/general-dynamics.jpg" class="hideMobile" style="width:200px; float:left; margin-left:3px; margin-right:20px; margin-top:10px">
-
-
       </div>
       
 
@@ -397,9 +412,9 @@ navigation.js has a conflict with reveal
   <section style="background:#dae8eb">
     <div class="content contentpadding">
 
-      <!---->
-      <h4>US Environmentally Extended Input-Output (USEEIO) Model</h4>
       <h1 style="margin-bottom:0px">ABOUT THE MODEL</h1>
+      <h4>US Environmentally Extended Input-Output (USEEIO) Model</h4>
+      
       <br>
 
       <h3 style="margin:0px">
@@ -427,7 +442,6 @@ navigation.js has a conflict with reveal
 
   <section>
     <div class="content contentpadding" style="max-width:1200px">
-      <h2>Code for America / Democracy Lab</h2>
       <h1>OBJECTIVES</h1>
       <h3>To develop, customize and improve community-focused web resources that integrate USEEIO widgets with other data sources to inform community sustainability practices and innovative new development.</h3>
       <br>
@@ -470,15 +484,11 @@ navigation.js has a conflict with reveal
   </section>
 
 
-  <section>
+  <section style="display:block">
 
-    <div style="position:absolute;z-index:-1; width: 100%; top:1px; bottom:1px; opacity:.1; background:#dae8eb">
-        
-            <img src="../../apps/ev/img/hero/andrew-roberts-charging.jpg" style="width:100%">
-        
-    </div>
+    
 
-    <div class="content contentpadding">
+    <div class="content contentpadding" style="overflow:visible;">
 
       <br><br><br>
       <h2>Locally Focused Apps</h2>
@@ -498,6 +508,7 @@ navigation.js has a conflict with reveal
 
       <a href="../../io/communities/">For Local Community Reps</a>
 
+      <div style="clear:both"></div>
 
     </div>
   </section>
@@ -603,6 +614,8 @@ $(".swiper-button-next").click(function () {
         $('html, body').stop(true).animate({
             scrollTop: $nextElement.offset().top
         }, 1000);
+    } else {
+      $('html,body').scrollTop(0);
     }
     return false;
 });
@@ -624,5 +637,6 @@ $(".swiper-button-prev").click(function () {
 
 </script>
 
+<link rel="stylesheet" href="/localsite/css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />
 </body>
 </html>
