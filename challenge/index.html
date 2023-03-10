@@ -12,11 +12,6 @@
 <script type="text/javascript" src="../../localsite/js/localsite.js?showheader=true&showsearch=true"></script>
 <link type="text/css" href="../../localsite/css/base.css" rel="stylesheet" id="/localsite/css/base.css" />
 
-<!--
-    Code for Atlanta is hosting an Dive Into Data Commons now through January 23, 2021. Join our zoom call on Dec 12 at 7pm to get involved. What are some great mobility projects you’d like to see integrated?
-https://model.earth/community/challenge/
--->
-
 <!-- For Facebook -->
 <meta property="og:type" content="article" />
 <meta property="og:image" content="https://model.earth/community/img/overview/code-for-america-rect.jpg" />
@@ -53,7 +48,6 @@ https://model.earth/community/challenge/
   //loadMarkdown("https://raw.githubusercontent.com/wiki/USEPA/useeio-widgets/Home.md", "useDiv", "_parent");
   ////loadMarkdown("https://raw.githubusercontent.com/wiki/USEPA/useeio-widgets/Use.md", "useDiv", "_parent");
 
-  //loadMarkdown("../../community/impact/harmonized-system/README.md", "ioDiv", "_parent");
   //loadMarkdown("../../io/Overview.md", "georgiaDiv", "_parent");
 </script>
 
@@ -112,29 +106,56 @@ https://model.earth/community/challenge/
 }
 </style>
 
-<div style="position:relative; background:#aaa; max-height:200px"><!-- #dae8eb -->
 
-    <!-- psd resides in smartdata -->
+
+<style>
+#heroHolder {
+    min-height:350px
+}
+#heroImage {
+    width: 100%;
+}
+@media (max-width: 800px) {
+    #heroImage {
+        min-height:200px;
+        max-width:800px;
+        width:800px;
+    }
+}
+@media (min-width:800px) {
+    #heroHolder {
+        min-height:400px;
+    }
+}
+@media (min-width:1400px) {
+    #heroHolder {
+        min-height:580px;
+    }
+}
+</style>
+
+<div style="position:relative; background:#aaa; max-height:550px">
+
+
     <div style="background-color: #dae8eb; margin: 0 auto; overflow: auto; padding:0px; border:0px">
-        <div style="max-width:1400px; text-align:left; position:relative; min-height:350px">
+        <div id="heroHolder" style="max-width:5000px; text-align:left; position:relative;">
 
-            <img src="../img/overview/banner-2.png" class="hideMobile" style="opacity:0.3; width:100%; max-width:600px; padding-top:20px; padding-right:20px; position:absolute; left:300px; bottom:0px">
+            <img id="heroImage" src="../img/hero/earth-artemus-2022.png" style="max-width:5000px;position: absolute;">
+            
+            <div style="position:absolute;z-index:2;width:100%">
+                <div style="float:left">
+                    <div class="hero-text" style="padding:35px 40px 0 40px; background-colorX:rgba(35, 35, 35, .6);">
 
-            <!--
-            <img src="img/overview/banner-1.png">
-            -->
-            <div style="float:left">
-                <div class="hero-text" style="padding:30px 0px 0 40px">
+                        <img src="../img/logo/code-for-america-and-earth.png" style="width:100%;max-width:240px;padding:10px 0 15px 0"><br>
+                        <br>
+                    </div>
 
-                    <img src="../img/logo/code-for-america-and-earth.png" style="width:100%;max-width:220px;padding:10px 0 15px 0"><br>
-                    <br>
                 </div>
-
-            </div>
-            <div style="float:right; padding:20px 50px 0 0; text-align: center">
-                
-                <img src="../img/logo/epa-circle.png" style="width:100%;max-width:160px"><br>
-                
+                <div style="float:right; padding:40px 50px 0 0; text-align: center">
+                    
+                    <img src="../img/logo/epa-circle.png" style="width:100%;max-width:160px"><br>
+                    
+                </div>
             </div>
         </div>
     </div>
@@ -285,17 +306,6 @@ https://model.earth/community/challenge/
     -->
 
     <!--
-    <div class="pagecard">
-        <div class="cardstyle">
-            <div class="leftLogo">
-                <a href="https://codeforall.org/members" target="_blank"><img src="../img/logo/code-for-all.png" style="width:100%; max-width:200px"></a>
-            </div>
-            <div style="overflow:auto">
-                <div id="ioDiv"></div>
-            </div>
-        </div>
-    </div>
-
     <div class="pagecard">
         <div class="cardstyle">
             <div class="leftLogo">
